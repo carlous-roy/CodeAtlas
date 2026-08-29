@@ -1,0 +1,48 @@
+{
+  "protocol": {
+    "relevance": "file-level. A retrieved chunk counts as relevant if its source file is in `relevant`. This is coarser than passage-level judgement, but it is reproducible and it does not require me to adjudicate every chunk, which is where hand-built golden sets usually go wrong.",
+    "authoring": "Questions were written against the codebase by reading it, phrased the way someone new to the repo would ask rather than by pasting identifiers. Questions that only work because they repeat a function name would flatter lexical search and measure nothing.",
+    "difficulty": "lexical = the answer's file contains the question's key terms. semantic = it does not, and the match has to come from meaning. cross_file = the answer is spread over more than one file."
+  },
+  "questions": [
+    {"id": "tf01", "q": "How long does it wait between retry attempts, and does that gap grow?", "relevant": ["corpus/taskforge/taskforge-common/src/main/java/com/taskforge/common/model/ReportJob.java", "corpus/taskforge/taskforge-common/src/test/java/com/taskforge/common/ReportJobTest.java"], "difficulty": "semantic"},
+    {"id": "tf02", "q": "What happens to a job that keeps failing and never succeeds?", "relevant": ["corpus/taskforge/taskforge-worker/src/main/java/com/taskforge/worker/service/JobProcessor.java", "corpus/taskforge/taskforge-common/src/main/java/com/taskforge/common/model/ReportJob.java"], "difficulty": "semantic"},
+    {"id": "tf03", "q": "Is there anything stopping one client from hammering the API?", "relevant": ["corpus/taskforge/taskforge-api/src/main/java/com/taskforge/api/config/RateLimitFilter.java"], "difficulty": "semantic"},
+    {"id": "tf04", "q": "What stops the same report being generated twice if a client retries the submit?", "relevant": ["corpus/taskforge/taskforge-api/src/main/java/com/taskforge/api/service/ReportService.java", "corpus/taskforge/taskforge-common/src/main/java/com/taskforge/common/exception/DuplicateReportException.java", "corpus/taskforge/taskforge-api/src/main/java/com/taskforge/api/controller/GlobalExceptionHandler.java"], "difficulty": "cross_file"},
+    {"id": "tf05", "q": "If the worker is killed mid-deploy, does it finish the job it is holding?", "relevant": ["corpus/taskforge/taskforge-worker/src/main/java/com/taskforge/worker/service/MessagePoller.java"], "difficulty": "semantic"},
+    {"id": "tf06", "q": "How does a finished report get handed to the user for download?", "relevant": ["corpus/taskforge/taskforge-common/src/main/java/com/taskforge/common/service/StorageService.java", "corpus/taskforge/taskforge-api/src/main/java/com/taskforge/api/controller/ReportController.java"], "difficulty": "cross_file"},
+    {"id": "tf07", "q": "How do I point this at a local AWS stand-in instead of real AWS?", "relevant": ["corpus/taskforge/taskforge-common/src/main/java/com/taskforge/common/config/AwsConfig.java", "corpus/taskforge/README.md"], "difficulty": "semantic"},
+    {"id": "tf08", "q": "What kinds of report can this actually produce?", "relevant": ["corpus/taskforge/taskforge-common/src/main/java/com/taskforge/common/enums/ReportType.java", "corpus/taskforge/taskforge-worker/src/main/java/com/taskforge/worker/report/SalesSummaryGenerator.java", "corpus/taskforge/taskforge-worker/src/main/java/com/taskforge/worker/report/InventorySnapshotGenerator.java", "corpus/taskforge/taskforge-worker/src/main/java/com/taskforge/worker/report/UserActivityGenerator.java"], "difficulty": "cross_file"},
+    {"id": "tf09", "q": "Where is job state stored so the API and the worker both see it?", "relevant": ["corpus/taskforge/taskforge-common/src/main/java/com/taskforge/common/repository/ReportJobRepository.java"], "difficulty": "semantic"},
+    {"id": "tf10", "q": "How do I trace one request across the whole system when it fails?", "relevant": ["corpus/taskforge/taskforge-common/src/main/java/com/taskforge/common/model/ReportJob.java", "corpus/taskforge/README.md"], "difficulty": "semantic"},
+    {"id": "tf11", "q": "How does work get from the API onto the queue?", "relevant": ["corpus/taskforge/taskforge-common/src/main/java/com/taskforge/common/service/QueueService.java", "corpus/taskforge/taskforge-api/src/main/java/com/taskforge/api/service/ReportService.java"], "difficulty": "cross_file"},
+    {"id": "tf12", "q": "Where does the sample data the reports run against come from?", "relevant": ["corpus/taskforge/taskforge-worker/src/main/java/com/taskforge/worker/data/DataSeeder.java"], "difficulty": "semantic"},
+
+    {"id": "dl01", "q": "How does it decide a function is too complicated?", "relevant": ["corpus/difflens/app/analysis/complexity.py"], "difficulty": "semantic"},
+    {"id": "dl02", "q": "Which dangerous coding patterns does it look for?", "relevant": ["corpus/difflens/app/analysis/bug_risk.py"], "difficulty": "semantic"},
+    {"id": "dl03", "q": "How do we know a webhook request really came from GitHub?", "relevant": ["corpus/difflens/app/github/webhook.py"], "difficulty": "semantic"},
+    {"id": "dl04", "q": "How does a finding get labelled as a security issue rather than a style one?", "relevant": ["corpus/difflens/app/ml/categorization.py"], "difficulty": "semantic"},
+    {"id": "dl05", "q": "What goes into the model that predicts how risky a change is?", "relevant": ["corpus/difflens/app/ml/risk_scoring.py"], "difficulty": "semantic"},
+    {"id": "dl06", "q": "How does it surface issues the codebase has already seen before?", "relevant": ["corpus/difflens/app/ml/similarity.py"], "difficulty": "semantic"},
+    {"id": "dl07", "q": "Which language model backends are supported and how do I switch?", "relevant": ["corpus/difflens/app/ml/llm_provider.py", "corpus/difflens/README.md"], "difficulty": "cross_file"},
+    {"id": "dl08", "q": "How is a patch turned into structured added and removed lines?", "relevant": ["corpus/difflens/app/analysis/diff_parser.py"], "difficulty": "semantic"},
+    {"id": "dl09", "q": "How do comments end up on the right line of a pull request?", "relevant": ["corpus/difflens/app/github/formatter.py", "corpus/difflens/app/github/pr_analyzer.py"], "difficulty": "cross_file"},
+    {"id": "dl10", "q": "Does it check naming style, and does it treat Java differently from Python?", "relevant": ["corpus/difflens/app/analysis/naming.py"], "difficulty": "lexical"},
+    {"id": "dl11", "q": "How are database schema changes applied?", "relevant": ["corpus/difflens/alembic/env.py", "corpus/difflens/alembic/versions/001_initial.py", "corpus/difflens/alembic/versions/002_github_prs.py"], "difficulty": "cross_file"},
+    {"id": "dl12", "q": "Which pull request events are ignored instead of analysed?", "relevant": ["corpus/difflens/app/github/webhook.py"], "difficulty": "semantic"},
+    {"id": "dl13", "q": "What ties the analysis steps together into one run?", "relevant": ["corpus/difflens/app/analysis/pipeline.py"], "difficulty": "semantic"},
+    {"id": "dl14", "q": "What does the API return when I submit a diff?", "relevant": ["corpus/difflens/app/api/schemas.py", "corpus/difflens/app/api/routes.py"], "difficulty": "cross_file"},
+
+    {"id": "gc01", "q": "How does it work out how many fingers are up?", "relevant": ["corpus/gesturecontrol/src/hand_detector.py", "corpus/gesturecontrol/docs/ALGORITHM.md"], "difficulty": "cross_file"},
+    {"id": "gc02", "q": "Why can't the thumb use the same test as the other fingers?", "relevant": ["corpus/gesturecontrol/docs/ALGORITHM.md", "corpus/gesturecontrol/src/hand_detector.py"], "difficulty": "semantic"},
+    {"id": "gc03", "q": "Can I run this without the board plugged in?", "relevant": ["corpus/gesturecontrol/src/controller.py", "corpus/gesturecontrol/simulation/demo.py", "corpus/gesturecontrol/README.md"], "difficulty": "cross_file"},
+    {"id": "gc04", "q": "Which physical pins do I wire the relays to?", "relevant": ["corpus/gesturecontrol/docs/HARDWARE.md", "corpus/gesturecontrol/README.md"], "difficulty": "semantic"},
+    {"id": "gc05", "q": "What stops the relays flickering when my hand shakes slightly?", "relevant": ["corpus/gesturecontrol/src/hand_detector.py", "corpus/gesturecontrol/docs/ALGORITHM.md"], "difficulty": "semantic"},
+    {"id": "gc06", "q": "What happens to the appliances if I walk out of shot?", "relevant": ["corpus/gesturecontrol/src/controller.py", "corpus/gesturecontrol/README.md"], "difficulty": "semantic"},
+
+    {"id": "pf01", "q": "How does the assistant pick what background information to send with a question?", "relevant": ["corpus/portfolio/src/components/AIChatbot.jsx"], "difficulty": "semantic"},
+    {"id": "pf02", "q": "Is there anything limiting how many questions someone can ask?", "relevant": ["corpus/portfolio/src/components/AIChatbot.jsx"], "difficulty": "semantic"},
+    {"id": "pf03", "q": "How is the opening animation sequenced?", "relevant": ["corpus/portfolio/src/components/IntroAnimation.jsx"], "difficulty": "semantic"},
+    {"id": "pf04", "q": "Where do I set the API key for the site assistant?", "relevant": ["corpus/portfolio/README.md", "corpus/portfolio/src/components/AIChatbot.jsx"], "difficulty": "cross_file"}
+  ]
+}

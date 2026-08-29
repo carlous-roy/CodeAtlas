@@ -1,0 +1,39 @@
+{
+  "diagnostics": {
+    "questions": 36,
+    "missed_at_5": 7,
+    "doc_share_top5_all": 0.322,
+    "doc_share_top5_on_misses": 0.457,
+    "doc_share_top5_on_hits": 0.29,
+    "wrong_project_share_top5_all": 0.156,
+    "wrong_project_share_top5_on_misses": 0.286,
+    "wrong_project_share_top5_on_hits": 0.124,
+    "max_chunks_from_one_file_top5_mean": 2.33
+  },
+  "ablation": [
+    {
+      "recall@1": 0.417,
+      "recall@3": 0.667,
+      "recall@5": 0.806,
+      "recall@10": 0.889,
+      "mrr": 0.554,
+      "strategy": "hybrid"
+    },
+    {
+      "recall@1": 0.417,
+      "recall@3": 0.722,
+      "recall@5": 0.806,
+      "recall@10": 0.889,
+      "mrr": 0.56,
+      "strategy": "hybrid + per-file cap 2"
+    },
+    {
+      "recall@1": 0.417,
+      "recall@3": 0.778,
+      "recall@5": 0.861,
+      "recall@10": 0.917,
+      "mrr": 0.591,
+      "strategy": "hybrid + per-file cap 1"
+    }
+  ]
+}

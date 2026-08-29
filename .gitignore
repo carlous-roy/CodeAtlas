@@ -1,0 +1,6 @@
+index/*.npy
+index/*.jsonl
+corpus/
+__pycache__/
+.venv/
+.DS_Store
