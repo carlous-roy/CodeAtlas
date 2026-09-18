@@ -444,7 +444,9 @@ class Evaluation:
         reranker = load_reranker() if s.with_rerank else None
         budget = payload_budget()
 
-        for chunking in s.chunkings:
+        # The shipped chunking goes first so that the per-file cap is chosen on it.
+        order = sorted(s.chunkings, key=lambda c: c != SHIPPED_CHUNKING)
+        for chunking in order:
             chunks = build_chunks(s.corpus_dir, chunking, count_tokens)
             write_chunks(chunks, s.index_dir / f"chunks_{chunking}.jsonl")
             info = size_summary(chunks)
