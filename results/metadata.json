@@ -1,0 +1,100 @@
+{
+  "generated_at": "2026-09-18T23:23:00+00:00",
+  "codeatlas_version": "0.2.0",
+  "codeatlas_commit": "632c9b87c86f265cbb66ba40232f90768b72eca6",
+  "python": "3.11.15",
+  "platform": "Linux-6.18.44-fc-v33-x86_64-with-glibc2.39",
+  "packages": {
+    "numpy": "2.4.6",
+    "torch": "2.14.0+cpu",
+    "sentence-transformers": "6.0.1",
+    "transformers": "5.17.0",
+    "tokenizers": "0.23.2",
+    "tree-sitter": "0.25.2",
+    "tree-sitter-python": "0.25.0",
+    "tree-sitter-java": "0.23.5",
+    "rank-bm25": "0.2.2",
+    "snowballstemmer": "3.1.1"
+  },
+  "models": {
+    "embedder": {
+      "name": "sentence-transformers/all-MiniLM-L6-v2",
+      "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "max_tokens": 256
+    },
+    "reranker": {
+      "name": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+      "revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+      "max_tokens": 512
+    }
+  },
+  "corpus": {
+    "manifest": "results/corpus_manifest.json",
+    "manifest_sha256": "01ee3322119c47e3a5ee0ade597705b0e58e6b7ef0a035bafda967104327366b",
+    "verified": true,
+    "projects": {
+      "difflens": "3ca9978e05b95ef7e4b8d6c47886c6b1990be37f",
+      "gesturecontrol": "53c4b04bf767d00f9799fb54ce3abf0a57401237",
+      "portfolio": "7c361eea5f1df4b38e7fd128865ced7b94c2e93e",
+      "taskforge": "8c02b8a514bb842d3cbd9749af065aec28eb0568"
+    },
+    "files": 116,
+    "lines": 11819
+  },
+  "questions": {
+    "golden": "eval/golden.json",
+    "golden_sha256": "4904b2bac96c3531b2d46e93f498d63e19441b28f1a5ae94b9462df0ca9f95ed",
+    "n": 36,
+    "split": "eval/split.json",
+    "dev_n": 18,
+    "test_n": 18
+  },
+  "settings": {
+    "depth": 10,
+    "fusion_depth": 60,
+    "rrf_k": 60,
+    "cap_depth": 60,
+    "rerank_depth": 30,
+    "per_file": 1,
+    "payload_budget_tokens": 254,
+    "window_overlap": 0.25,
+    "bootstrap_resamples": 10000,
+    "seed": 20260917
+  },
+  "chunkings": {
+    "structural_merged": {
+      "n_chunks": 942,
+      "median_lines": 12,
+      "p95_lines": 25,
+      "max_lines": 37,
+      "n_files": 116,
+      "max_payload_tokens": 254,
+      "median_payload_tokens": 225,
+      "payload_budget": 254,
+      "n_over_budget": 0
+    },
+    "structural": {
+      "n_chunks": 1281,
+      "median_lines": 8,
+      "p95_lines": 22,
+      "max_lines": 37,
+      "n_files": 116,
+      "max_payload_tokens": 254,
+      "median_payload_tokens": 158,
+      "payload_budget": 254,
+      "n_over_budget": 0
+    },
+    "window": {
+      "n_chunks": 919,
+      "median_lines": 16,
+      "p95_lines": 29,
+      "max_lines": 37,
+      "n_files": 116,
+      "max_payload_tokens": 254,
+      "median_payload_tokens": 242,
+      "payload_budget": 254,
+      "n_over_budget": 0
+    }
+  },
+  "duration_seconds": 324.0
+}

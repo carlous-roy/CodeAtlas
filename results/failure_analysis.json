@@ -1,39 +1,321 @@
 {
-  "diagnostics": {
-    "questions": 36,
-    "missed_at_5": 7,
-    "doc_share_top5_all": 0.322,
-    "doc_share_top5_on_misses": 0.457,
-    "doc_share_top5_on_hits": 0.29,
-    "wrong_project_share_top5_all": 0.156,
-    "wrong_project_share_top5_on_misses": 0.286,
-    "wrong_project_share_top5_on_hits": 0.124,
-    "max_chunks_from_one_file_top5_mean": 2.33
-  },
-  "ablation": [
-    {
-      "recall@1": 0.417,
-      "recall@3": 0.667,
-      "recall@5": 0.806,
-      "recall@10": 0.889,
-      "mrr": 0.554,
-      "strategy": "hybrid"
+  "configurations": {
+    "structural_merged/hybrid+cap": {
+      "misses_at_5": [
+        "tf03",
+        "tf08",
+        "tf09",
+        "tf12",
+        "dl06",
+        "dl13",
+        "gc05"
+      ],
+      "n_misses": 7,
+      "n_hits": 29,
+      "doc_share_top5": {
+        "misses": 0.3429,
+        "hits": 0.3034,
+        "all": 0.3111,
+        "diff_ci95": [
+          -0.0867,
+          0.1675
+        ]
+      },
+      "wrong_project_share_top5": {
+        "misses": 0.4,
+        "hits": 0.1586,
+        "all": 0.2056,
+        "diff_ci95": [
+          0.0276,
+          0.4621
+        ]
+      },
+      "misses_detail": [
+        {
+          "id": "tf03",
+          "q": "Is there anything stopping one client from hammering the API?",
+          "relevant": [
+            "corpus/taskforge/taskforge-api/src/main/java/com/taskforge/api/config/RateLimitFilter.java"
+          ],
+          "top5": [
+            "corpus/portfolio/README.md :: roycarlous.com > Assistant architecture",
+            "corpus/difflens/tests/test_api.py :: test_get_run_detail | test_get_run_not_found",
+            "corpus/difflens/app/github/__init__.py :: module level",
+            "corpus/portfolio/api/chat.js :: lines 1-16",
+            "corpus/taskforge/README.md :: TaskForge (3/4)"
+          ]
+        },
+        {
+          "id": "tf08",
+          "q": "What kinds of report can this actually produce?",
+          "relevant": [
+            "corpus/taskforge/taskforge-common/src/main/java/com/taskforge/common/enums/ReportType.java",
+            "corpus/taskforge/taskforge-worker/src/main/java/com/taskforge/worker/report/SalesSummaryGenerator.java",
+            "corpus/taskforge/taskforge-worker/src/main/java/com/taskforge/worker/report/InventorySnapshotGenerator.java",
+            "corpus/taskforge/taskforge-worker/src/main/java/com/taskforge/worker/report/UserActivityGenerator.java"
+          ],
+          "top5": [
+            "corpus/difflens/README.md :: DiffLens > Features > Scoring and Classification",
+            "corpus/taskforge/taskforge-common/src/main/java/com/taskforge/common/exception/ReportNotFoundException.java :: module level | ReportNotFoundException | ReportNotFoundException.ReportNotFoundException",
+            "corpus/taskforge/taskforge-worker/src/main/java/com/taskforge/worker/report/ReportGenerator.java :: module level | ReportGenerator | ReportGenerator.getType | ReportGenerator.generate",
+            "corpus/taskforge/taskforge-common/src/test/java/com/taskforge/common/ReportJobTest.java :: module level | ReportJobTest",
+            "corpus/taskforge/README.md :: TaskForge > Features > Dashboard"
+          ]
+        },
+        {
+          "id": "tf09",
+          "q": "Where is job state stored so the API and the worker both see it?",
+          "relevant": [
+            "corpus/taskforge/taskforge-common/src/main/java/com/taskforge/common/repository/ReportJobRepository.java"
+          ],
+          "top5": [
+            "corpus/taskforge/README.md :: TaskForge (4/4) | TaskForge > Features | TaskForge > Features > Distributed Job Processing",
+            "corpus/taskforge/taskforge-worker/src/main/java/com/taskforge/worker/config/HealthEndpoint.java :: HealthEndpoint.health",
+            "corpus/portfolio/src/components/AIChatbot.jsx :: lines 31-31",
+            "corpus/portfolio/src/App.jsx :: lines 30-34",
+            "corpus/taskforge/docker-compose.yml :: lines 28-39"
+          ]
+        },
+        {
+          "id": "tf12",
+          "q": "Where does the sample data the reports run against come from?",
+          "relevant": [
+            "corpus/taskforge/taskforge-worker/src/main/java/com/taskforge/worker/data/DataSeeder.java"
+          ],
+          "top5": [
+            "corpus/difflens/tests/test_api.py :: test_analyze_python",
+            "corpus/portfolio/src/App.jsx :: lines 30-34",
+            "corpus/taskforge/README.md :: TaskForge > Features > Fault Tolerance (2/2) | TaskForge > Features > Report Generation",
+            "corpus/difflens/app/db/models.py :: AnalysisFinding (2/2)",
+            "corpus/difflens/frontend/src/pages/AnalyzePage.jsx :: lines 1-24"
+          ]
+        },
+        {
+          "id": "dl06",
+          "q": "How does it surface issues the codebase has already seen before?",
+          "relevant": [
+            "corpus/difflens/app/ml/similarity.py"
+          ],
+          "top5": [
+            "corpus/difflens/README.md :: DiffLens (3/4)",
+            "corpus/portfolio/src/components/AIChatbot.jsx :: lines 29-30",
+            "corpus/portfolio/src/App.jsx :: lines 70-76",
+            "corpus/difflens/app/analysis/bug_risk.py :: module level (8/8)",
+            "corpus/difflens/CHANGELOG.md :: Changelog > [1.0.0] — 2025-03-04 > Features (1/2)"
+          ]
+        },
+        {
+          "id": "dl13",
+          "q": "What ties the analysis steps together into one run?",
+          "relevant": [
+            "corpus/difflens/app/analysis/pipeline.py"
+          ],
+          "top5": [
+            "corpus/difflens/app/db/models.py :: AnalysisRun (1/2)",
+            "corpus/difflens/app/api/routes.py :: analyze_diff (1/4)",
+            "corpus/difflens/README.md :: DiffLens > Features > Dashboard | DiffLens > Features > Raw Code Auto-Detection",
+            "corpus/difflens/app/github/pr_analyzer.py :: _persist_analysis (2/4)",
+            "corpus/difflens/frontend/src/pages/HistoryPage.jsx :: lines 55-69"
+          ]
+        },
+        {
+          "id": "gc05",
+          "q": "What stops the relays flickering when my hand shakes slightly?",
+          "relevant": [
+            "corpus/gesturecontrol/src/hand_detector.py",
+            "corpus/gesturecontrol/docs/ALGORITHM.md"
+          ],
+          "top5": [
+            "corpus/gesturecontrol/README.md :: GestureControl (3/4)",
+            "corpus/gesturecontrol/docs/TECHNICAL_REPORT.md :: Technical Report: AI Gesture-Based Home Automation > 4. Hardware Implementation > 4.3 Wiring (2/2) | Technical Report: AI Gesture-Based Home Automation > 5. Results",
+            "corpus/portfolio/src/App.jsx :: lines 40-43",
+            "corpus/gesturecontrol/main.py :: main (3/4)",
+            "corpus/gesturecontrol/docs/HARDWARE.md :: Hardware Guide > Components > 4-Channel Relay Module (with Optocoupler) (2/2)"
+          ]
+        }
+      ]
     },
-    {
-      "recall@1": 0.417,
-      "recall@3": 0.722,
-      "recall@5": 0.806,
-      "recall@10": 0.889,
-      "mrr": 0.56,
-      "strategy": "hybrid + per-file cap 2"
-    },
-    {
-      "recall@1": 0.417,
-      "recall@3": 0.778,
-      "recall@5": 0.861,
-      "recall@10": 0.917,
-      "mrr": 0.591,
-      "strategy": "hybrid + per-file cap 1"
+    "structural_merged/hybrid": {
+      "misses_at_5": [
+        "tf03",
+        "tf08",
+        "tf09",
+        "tf12",
+        "dl04",
+        "dl06",
+        "dl13",
+        "dl14",
+        "gc05",
+        "pf02"
+      ],
+      "n_misses": 10,
+      "n_hits": 26,
+      "doc_share_top5": {
+        "misses": 0.4,
+        "hits": 0.3538,
+        "all": 0.3667,
+        "diff_ci95": [
+          -0.1292,
+          0.22
+        ]
+      },
+      "wrong_project_share_top5": {
+        "misses": 0.34,
+        "hits": 0.0769,
+        "all": 0.15,
+        "diff_ci95": [
+          0.0631,
+          0.48
+        ]
+      },
+      "misses_detail": [
+        {
+          "id": "tf03",
+          "q": "Is there anything stopping one client from hammering the API?",
+          "relevant": [
+            "corpus/taskforge/taskforge-api/src/main/java/com/taskforge/api/config/RateLimitFilter.java"
+          ],
+          "top5": [
+            "corpus/portfolio/README.md :: roycarlous.com > Assistant architecture",
+            "corpus/difflens/tests/test_api.py :: test_get_run_detail | test_get_run_not_found",
+            "corpus/difflens/tests/test_api.py :: test_list_runs",
+            "corpus/difflens/app/github/__init__.py :: module level",
+            "corpus/portfolio/api/chat.js :: lines 1-16"
+          ]
+        },
+        {
+          "id": "tf08",
+          "q": "What kinds of report can this actually produce?",
+          "relevant": [
+            "corpus/taskforge/taskforge-common/src/main/java/com/taskforge/common/enums/ReportType.java",
+            "corpus/taskforge/taskforge-worker/src/main/java/com/taskforge/worker/report/SalesSummaryGenerator.java",
+            "corpus/taskforge/taskforge-worker/src/main/java/com/taskforge/worker/report/InventorySnapshotGenerator.java",
+            "corpus/taskforge/taskforge-worker/src/main/java/com/taskforge/worker/report/UserActivityGenerator.java"
+          ],
+          "top5": [
+            "corpus/difflens/README.md :: DiffLens > Features > Scoring and Classification",
+            "corpus/taskforge/taskforge-common/src/main/java/com/taskforge/common/exception/ReportNotFoundException.java :: module level | ReportNotFoundException | ReportNotFoundException.ReportNotFoundException",
+            "corpus/taskforge/taskforge-worker/src/main/java/com/taskforge/worker/report/ReportGenerator.java :: module level | ReportGenerator | ReportGenerator.getType | ReportGenerator.generate",
+            "corpus/taskforge/taskforge-common/src/test/java/com/taskforge/common/ReportJobTest.java :: module level | ReportJobTest",
+            "corpus/taskforge/README.md :: TaskForge > Features > Dashboard"
+          ]
+        },
+        {
+          "id": "tf09",
+          "q": "Where is job state stored so the API and the worker both see it?",
+          "relevant": [
+            "corpus/taskforge/taskforge-common/src/main/java/com/taskforge/common/repository/ReportJobRepository.java"
+          ],
+          "top5": [
+            "corpus/taskforge/README.md :: TaskForge (4/4) | TaskForge > Features | TaskForge > Features > Distributed Job Processing",
+            "corpus/taskforge/taskforge-worker/src/main/java/com/taskforge/worker/config/HealthEndpoint.java :: HealthEndpoint.health",
+            "corpus/taskforge/README.md :: TaskForge > Features > Fault Tolerance (1/2)",
+            "corpus/portfolio/src/components/AIChatbot.jsx :: lines 31-31",
+            "corpus/taskforge/README.md :: TaskForge > Scaling | TaskForge > Running Tests"
+          ]
+        },
+        {
+          "id": "tf12",
+          "q": "Where does the sample data the reports run against come from?",
+          "relevant": [
+            "corpus/taskforge/taskforge-worker/src/main/java/com/taskforge/worker/data/DataSeeder.java"
+          ],
+          "top5": [
+            "corpus/difflens/tests/test_api.py :: test_analyze_python",
+            "corpus/portfolio/src/App.jsx :: lines 30-34",
+            "corpus/taskforge/README.md :: TaskForge > Features > Fault Tolerance (2/2) | TaskForge > Features > Report Generation",
+            "corpus/difflens/app/db/models.py :: AnalysisFinding (2/2)",
+            "corpus/taskforge/README.md :: TaskForge > Project Structure (2/2)"
+          ]
+        },
+        {
+          "id": "dl04",
+          "q": "How does a finding get labelled as a security issue rather than a style one?",
+          "relevant": [
+            "corpus/difflens/app/ml/categorization.py"
+          ],
+          "top5": [
+            "corpus/difflens/README.md :: DiffLens > Features > Scoring and Classification",
+            "corpus/difflens/README.md :: DiffLens (3/4)",
+            "corpus/difflens/app/ml/risk_scoring.py :: extract_features (2/3)",
+            "corpus/difflens/tests/test_risk_scoring.py :: TestFeatureExtraction.test_basic_extraction (2/2)",
+            "corpus/difflens/tests/test_risk_scoring.py :: TestFeatureExtraction.test_empty_analysis | TestHeuristicScoring"
+          ]
+        },
+        {
+          "id": "dl06",
+          "q": "How does it surface issues the codebase has already seen before?",
+          "relevant": [
+            "corpus/difflens/app/ml/similarity.py"
+          ],
+          "top5": [
+            "corpus/difflens/README.md :: DiffLens (3/4)",
+            "corpus/portfolio/src/components/AIChatbot.jsx :: lines 29-30",
+            "corpus/portfolio/src/App.jsx :: lines 70-76",
+            "corpus/difflens/README.md :: DiffLens > Features > Scoring and Classification",
+            "corpus/portfolio/src/App.jsx :: lines 67-70"
+          ]
+        },
+        {
+          "id": "dl13",
+          "q": "What ties the analysis steps together into one run?",
+          "relevant": [
+            "corpus/difflens/app/analysis/pipeline.py"
+          ],
+          "top5": [
+            "corpus/difflens/app/db/models.py :: AnalysisRun (1/2)",
+            "corpus/difflens/app/api/routes.py :: analyze_diff (1/4)",
+            "corpus/difflens/README.md :: DiffLens > Features > Dashboard | DiffLens > Features > Raw Code Auto-Detection",
+            "corpus/difflens/app/db/models.py :: AnalysisFinding (2/2)",
+            "corpus/difflens/app/github/pr_analyzer.py :: _persist_analysis (2/4)"
+          ]
+        },
+        {
+          "id": "dl14",
+          "q": "What does the API return when I submit a diff?",
+          "relevant": [
+            "corpus/difflens/app/api/schemas.py",
+            "corpus/difflens/app/api/routes.py"
+          ],
+          "top5": [
+            "corpus/difflens/frontend/src/api.js :: lines 1-22",
+            "corpus/difflens/app/github/client.py :: GitHubClient.get_pr_diff",
+            "corpus/difflens/tests/test_api.py :: test_analyze_clean_code | test_analyze_empty_diff_rejected",
+            "corpus/difflens/tests/test_api.py :: module level | test_root | test_health",
+            "corpus/difflens/tests/test_api.py :: test_list_runs"
+          ]
+        },
+        {
+          "id": "gc05",
+          "q": "What stops the relays flickering when my hand shakes slightly?",
+          "relevant": [
+            "corpus/gesturecontrol/src/hand_detector.py",
+            "corpus/gesturecontrol/docs/ALGORITHM.md"
+          ],
+          "top5": [
+            "corpus/gesturecontrol/README.md :: GestureControl (3/4)",
+            "corpus/gesturecontrol/docs/TECHNICAL_REPORT.md :: Technical Report: AI Gesture-Based Home Automation > 4. Hardware Implementation > 4.3 Wiring (2/2) | Technical Report: AI Gesture-Based Home Automation > 5. Results",
+            "corpus/portfolio/src/App.jsx :: lines 40-43",
+            "corpus/gesturecontrol/docs/TECHNICAL_REPORT.md :: Technical Report: AI Gesture-Based Home Automation > 3. Software Implementation > 3.2 Finger Counting Algorithm > Stabilization",
+            "corpus/gesturecontrol/README.md :: GestureControl > What I'd do differently"
+          ]
+        },
+        {
+          "id": "pf02",
+          "q": "Is there anything limiting how many questions someone can ask?",
+          "relevant": [
+            "corpus/portfolio/src/components/AIChatbot.jsx"
+          ],
+          "top5": [
+            "corpus/taskforge/taskforge-api/src/main/java/com/taskforge/api/config/RateLimitFilter.java :: RateLimitFilter.doFilter (2/2)",
+            "corpus/portfolio/README.md :: roycarlous.com > Assistant architecture",
+            "corpus/taskforge/README.md :: TaskForge > What I'd do differently (2/2) | TaskForge > License",
+            "corpus/portfolio/api/chat.js :: lines 42-51",
+            "corpus/taskforge/README.md :: TaskForge > Features > Production Engineering"
+          ]
+        }
+      ]
     }
-  ]
+  },
+  "shipped": "structural_merged/hybrid+cap"
 }

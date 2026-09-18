@@ -1,0 +1,124 @@
+{
+  "chunking": "structural_merged",
+  "base_strategy": "hybrid",
+  "rule": "highest dev MRR, then dev recall@5; ties prefer no cap, then the larger cap",
+  "candidates": [
+    null,
+    3,
+    2,
+    1
+  ],
+  "chosen_per_file": 1,
+  "dev_n": 18,
+  "test_n": 18,
+  "rows": [
+    {
+      "per_file": null,
+      "dev": {
+        "hit_rate@1": 0.5556,
+        "hit_rate@3": 0.6111,
+        "hit_rate@5": 0.6111,
+        "recall@5": 0.4815,
+        "mrr": 0.6037,
+        "ndcg@10": 0.5356
+      },
+      "test": {
+        "hit_rate@1": 0.2778,
+        "hit_rate@3": 0.7222,
+        "hit_rate@5": 0.8333,
+        "recall@5": 0.6667,
+        "mrr": 0.4908,
+        "ndcg@10": 0.5082
+      },
+      "all": {
+        "hit_rate@1": 0.4167,
+        "hit_rate@3": 0.6667,
+        "hit_rate@5": 0.7222,
+        "recall@5": 0.5741,
+        "mrr": 0.5473,
+        "ndcg@10": 0.5219
+      }
+    },
+    {
+      "per_file": 3,
+      "dev": {
+        "hit_rate@1": 0.5556,
+        "hit_rate@3": 0.6111,
+        "hit_rate@5": 0.6111,
+        "recall@5": 0.4815,
+        "mrr": 0.6037,
+        "ndcg@10": 0.5356
+      },
+      "test": {
+        "hit_rate@1": 0.2778,
+        "hit_rate@3": 0.7222,
+        "hit_rate@5": 0.8333,
+        "recall@5": 0.6667,
+        "mrr": 0.4936,
+        "ndcg@10": 0.5106
+      },
+      "all": {
+        "hit_rate@1": 0.4167,
+        "hit_rate@3": 0.6667,
+        "hit_rate@5": 0.7222,
+        "recall@5": 0.5741,
+        "mrr": 0.5486,
+        "ndcg@10": 0.5231
+      }
+    },
+    {
+      "per_file": 2,
+      "dev": {
+        "hit_rate@1": 0.5556,
+        "hit_rate@3": 0.6111,
+        "hit_rate@5": 0.6667,
+        "recall@5": 0.5093,
+        "mrr": 0.6069,
+        "ndcg@10": 0.5375
+      },
+      "test": {
+        "hit_rate@1": 0.2778,
+        "hit_rate@3": 0.7778,
+        "hit_rate@5": 0.8333,
+        "recall@5": 0.6667,
+        "mrr": 0.4982,
+        "ndcg@10": 0.5145
+      },
+      "all": {
+        "hit_rate@1": 0.4167,
+        "hit_rate@3": 0.6944,
+        "hit_rate@5": 0.75,
+        "recall@5": 0.588,
+        "mrr": 0.5526,
+        "ndcg@10": 0.526
+      }
+    },
+    {
+      "per_file": 1,
+      "dev": {
+        "hit_rate@1": 0.5556,
+        "hit_rate@3": 0.6111,
+        "hit_rate@5": 0.6667,
+        "recall@5": 0.5278,
+        "mrr": 0.6144,
+        "ndcg@10": 0.5691
+      },
+      "test": {
+        "hit_rate@1": 0.2778,
+        "hit_rate@3": 0.7778,
+        "hit_rate@5": 0.9444,
+        "recall@5": 0.7778,
+        "mrr": 0.5389,
+        "ndcg@10": 0.5766
+      },
+      "all": {
+        "hit_rate@1": 0.4167,
+        "hit_rate@3": 0.6944,
+        "hit_rate@5": 0.8056,
+        "recall@5": 0.6528,
+        "mrr": 0.5767,
+        "ndcg@10": 0.5729
+      }
+    }
+  ]
+}

@@ -1,0 +1,632 @@
+[
+  {
+    "label": "structural boundaries vs windows, hybrid",
+    "a": "structural_merged/hybrid",
+    "b": "window/hybrid",
+    "metric": "hit_rate@1",
+    "a_value": 0.4167,
+    "b_value": 0.3889,
+    "diff": 0.0278,
+    "ci95": [
+      -0.0556,
+      0.1111
+    ],
+    "better": 2,
+    "worse": 1,
+    "same": 33,
+    "sign_test_p": 1.0,
+    "within_noise": true
+  },
+  {
+    "label": "structural boundaries vs windows, hybrid",
+    "a": "structural_merged/hybrid",
+    "b": "window/hybrid",
+    "metric": "mrr",
+    "a_value": 0.5473,
+    "b_value": 0.5151,
+    "diff": 0.0322,
+    "ci95": [
+      -0.0271,
+      0.0893
+    ],
+    "better": 11,
+    "worse": 4,
+    "same": 21,
+    "sign_test_p": 0.1185,
+    "within_noise": true
+  },
+  {
+    "label": "structural boundaries vs windows, hybrid",
+    "a": "structural_merged/hybrid",
+    "b": "window/hybrid",
+    "metric": "ndcg@10",
+    "a_value": 0.5219,
+    "b_value": 0.4867,
+    "diff": 0.0352,
+    "ci95": [
+      -0.0041,
+      0.0771
+    ],
+    "better": 12,
+    "worse": 6,
+    "same": 18,
+    "sign_test_p": 0.2379,
+    "within_noise": true
+  },
+  {
+    "label": "structural boundaries vs windows, dense",
+    "a": "structural_merged/dense",
+    "b": "window/dense",
+    "metric": "hit_rate@1",
+    "a_value": 0.3889,
+    "b_value": 0.3611,
+    "diff": 0.0278,
+    "ci95": [
+      -0.0833,
+      0.1389
+    ],
+    "better": 3,
+    "worse": 2,
+    "same": 31,
+    "sign_test_p": 1.0,
+    "within_noise": true
+  },
+  {
+    "label": "structural boundaries vs windows, dense",
+    "a": "structural_merged/dense",
+    "b": "window/dense",
+    "metric": "mrr",
+    "a_value": 0.5324,
+    "b_value": 0.5137,
+    "diff": 0.0187,
+    "ci95": [
+      -0.0693,
+      0.1011
+    ],
+    "better": 10,
+    "worse": 4,
+    "same": 22,
+    "sign_test_p": 0.1796,
+    "within_noise": true
+  },
+  {
+    "label": "merged vs unmerged structural, hybrid",
+    "a": "structural_merged/hybrid",
+    "b": "structural/hybrid",
+    "metric": "hit_rate@1",
+    "a_value": 0.4167,
+    "b_value": 0.3889,
+    "diff": 0.0278,
+    "ci95": [
+      -0.0556,
+      0.1111
+    ],
+    "better": 2,
+    "worse": 1,
+    "same": 33,
+    "sign_test_p": 1.0,
+    "within_noise": true
+  },
+  {
+    "label": "merged vs unmerged structural, hybrid",
+    "a": "structural_merged/hybrid",
+    "b": "structural/hybrid",
+    "metric": "mrr",
+    "a_value": 0.5473,
+    "b_value": 0.5207,
+    "diff": 0.0265,
+    "ci95": [
+      -0.0273,
+      0.0852
+    ],
+    "better": 10,
+    "worse": 3,
+    "same": 23,
+    "sign_test_p": 0.0923,
+    "within_noise": true
+  },
+  {
+    "label": "hybrid vs dense, merged",
+    "a": "structural_merged/hybrid",
+    "b": "structural_merged/dense",
+    "metric": "hit_rate@1",
+    "a_value": 0.4167,
+    "b_value": 0.3889,
+    "diff": 0.0278,
+    "ci95": [
+      -0.1667,
+      0.2222
+    ],
+    "better": 7,
+    "worse": 6,
+    "same": 23,
+    "sign_test_p": 1.0,
+    "within_noise": true
+  },
+  {
+    "label": "hybrid vs dense, merged",
+    "a": "structural_merged/hybrid",
+    "b": "structural_merged/dense",
+    "metric": "hit_rate@5",
+    "a_value": 0.7222,
+    "b_value": 0.8333,
+    "diff": -0.1111,
+    "ci95": [
+      -0.25,
+      0.0
+    ],
+    "better": 1,
+    "worse": 5,
+    "same": 30,
+    "sign_test_p": 0.2188,
+    "within_noise": true
+  },
+  {
+    "label": "hybrid vs dense, merged",
+    "a": "structural_merged/hybrid",
+    "b": "structural_merged/dense",
+    "metric": "mrr",
+    "a_value": 0.5473,
+    "b_value": 0.5324,
+    "diff": 0.0148,
+    "ci95": [
+      -0.1257,
+      0.1604
+    ],
+    "better": 14,
+    "worse": 11,
+    "same": 11,
+    "sign_test_p": 0.69,
+    "within_noise": true
+  },
+  {
+    "label": "hybrid vs dense, merged",
+    "a": "structural_merged/hybrid",
+    "b": "structural_merged/dense",
+    "metric": "ndcg@10",
+    "a_value": 0.5219,
+    "b_value": 0.5316,
+    "diff": -0.0097,
+    "ci95": [
+      -0.1114,
+      0.0872
+    ],
+    "better": 14,
+    "worse": 12,
+    "same": 10,
+    "sign_test_p": 0.845,
+    "within_noise": true
+  },
+  {
+    "label": "hybrid vs dense, window",
+    "a": "window/hybrid",
+    "b": "window/dense",
+    "metric": "hit_rate@1",
+    "a_value": 0.3889,
+    "b_value": 0.3611,
+    "diff": 0.0278,
+    "ci95": [
+      -0.1111,
+      0.1667
+    ],
+    "better": 4,
+    "worse": 3,
+    "same": 29,
+    "sign_test_p": 1.0,
+    "within_noise": true
+  },
+  {
+    "label": "hybrid vs dense, window",
+    "a": "window/hybrid",
+    "b": "window/dense",
+    "metric": "mrr",
+    "a_value": 0.5151,
+    "b_value": 0.5137,
+    "diff": 0.0013,
+    "ci95": [
+      -0.1092,
+      0.1108
+    ],
+    "better": 12,
+    "worse": 10,
+    "same": 14,
+    "sign_test_p": 0.8318,
+    "within_noise": true
+  },
+  {
+    "label": "hybrid vs bm25, merged",
+    "a": "structural_merged/hybrid",
+    "b": "structural_merged/bm25",
+    "metric": "hit_rate@5",
+    "a_value": 0.7222,
+    "b_value": 0.6667,
+    "diff": 0.0556,
+    "ci95": [
+      -0.0833,
+      0.1944
+    ],
+    "better": 4,
+    "worse": 2,
+    "same": 30,
+    "sign_test_p": 0.6875,
+    "within_noise": true
+  },
+  {
+    "label": "hybrid vs bm25, merged",
+    "a": "structural_merged/hybrid",
+    "b": "structural_merged/bm25",
+    "metric": "mrr",
+    "a_value": 0.5473,
+    "b_value": 0.3421,
+    "diff": 0.2051,
+    "ci95": [
+      0.0954,
+      0.3178
+    ],
+    "better": 20,
+    "worse": 3,
+    "same": 13,
+    "sign_test_p": 0.0005,
+    "within_noise": false
+  },
+  {
+    "label": "per-file cap vs none, merged hybrid",
+    "a": "structural_merged/hybrid+cap",
+    "b": "structural_merged/hybrid",
+    "metric": "hit_rate@3",
+    "a_value": 0.6944,
+    "b_value": 0.6667,
+    "diff": 0.0278,
+    "ci95": [
+      0.0,
+      0.0833
+    ],
+    "better": 1,
+    "worse": 0,
+    "same": 35,
+    "sign_test_p": 1.0,
+    "within_noise": true
+  },
+  {
+    "label": "per-file cap vs none, merged hybrid",
+    "a": "structural_merged/hybrid+cap",
+    "b": "structural_merged/hybrid",
+    "metric": "hit_rate@5",
+    "a_value": 0.8056,
+    "b_value": 0.7222,
+    "diff": 0.0833,
+    "ci95": [
+      0.0,
+      0.1944
+    ],
+    "better": 3,
+    "worse": 0,
+    "same": 33,
+    "sign_test_p": 0.25,
+    "within_noise": true
+  },
+  {
+    "label": "per-file cap vs none, merged hybrid",
+    "a": "structural_merged/hybrid+cap",
+    "b": "structural_merged/hybrid",
+    "metric": "recall@5",
+    "a_value": 0.6528,
+    "b_value": 0.5741,
+    "diff": 0.0787,
+    "ci95": [
+      0.0093,
+      0.1667
+    ],
+    "better": 4,
+    "worse": 0,
+    "same": 32,
+    "sign_test_p": 0.125,
+    "within_noise": false
+  },
+  {
+    "label": "per-file cap vs none, merged hybrid",
+    "a": "structural_merged/hybrid+cap",
+    "b": "structural_merged/hybrid",
+    "metric": "mrr",
+    "a_value": 0.5767,
+    "b_value": 0.5473,
+    "diff": 0.0294,
+    "ci95": [
+      0.0113,
+      0.0523
+    ],
+    "better": 9,
+    "worse": 0,
+    "same": 27,
+    "sign_test_p": 0.0039,
+    "within_noise": false
+  },
+  {
+    "label": "per-file cap vs none, merged hybrid",
+    "a": "structural_merged/hybrid+cap",
+    "b": "structural_merged/hybrid",
+    "metric": "ndcg@10",
+    "a_value": 0.5729,
+    "b_value": 0.5219,
+    "diff": 0.051,
+    "ci95": [
+      0.0267,
+      0.078
+    ],
+    "better": 16,
+    "worse": 0,
+    "same": 20,
+    "sign_test_p": 0.0,
+    "within_noise": false
+  },
+  {
+    "label": "reranker (text only) vs hybrid, merged",
+    "a": "structural_merged/hybrid+rerank",
+    "b": "structural_merged/hybrid",
+    "metric": "hit_rate@1",
+    "a_value": 0.2778,
+    "b_value": 0.4167,
+    "diff": -0.1389,
+    "ci95": [
+      -0.25,
+      -0.0278
+    ],
+    "better": 0,
+    "worse": 5,
+    "same": 31,
+    "sign_test_p": 0.0625,
+    "within_noise": false
+  },
+  {
+    "label": "reranker (text only) vs hybrid, merged",
+    "a": "structural_merged/hybrid+rerank",
+    "b": "structural_merged/hybrid",
+    "metric": "mrr",
+    "a_value": 0.4234,
+    "b_value": 0.5473,
+    "diff": -0.1238,
+    "ci95": [
+      -0.2197,
+      -0.0421
+    ],
+    "better": 5,
+    "worse": 12,
+    "same": 19,
+    "sign_test_p": 0.1435,
+    "within_noise": false
+  },
+  {
+    "label": "reranker (prefixed) vs hybrid, merged",
+    "a": "structural_merged/hybrid+rerank+prefix",
+    "b": "structural_merged/hybrid",
+    "metric": "hit_rate@1",
+    "a_value": 0.25,
+    "b_value": 0.4167,
+    "diff": -0.1667,
+    "ci95": [
+      -0.3056,
+      -0.0278
+    ],
+    "better": 1,
+    "worse": 7,
+    "same": 28,
+    "sign_test_p": 0.0703,
+    "within_noise": false
+  },
+  {
+    "label": "reranker (prefixed) vs hybrid, merged",
+    "a": "structural_merged/hybrid+rerank+prefix",
+    "b": "structural_merged/hybrid",
+    "metric": "mrr",
+    "a_value": 0.4549,
+    "b_value": 0.5473,
+    "diff": -0.0923,
+    "ci95": [
+      -0.1935,
+      0.0081
+    ],
+    "better": 10,
+    "worse": 13,
+    "same": 13,
+    "sign_test_p": 0.6776,
+    "within_noise": true
+  },
+  {
+    "label": "reranker prefixed vs text only, merged",
+    "a": "structural_merged/hybrid+rerank+prefix",
+    "b": "structural_merged/hybrid+rerank",
+    "metric": "hit_rate@1",
+    "a_value": 0.25,
+    "b_value": 0.2778,
+    "diff": -0.0278,
+    "ci95": [
+      -0.1389,
+      0.0556
+    ],
+    "better": 1,
+    "worse": 2,
+    "same": 33,
+    "sign_test_p": 1.0,
+    "within_noise": true
+  },
+  {
+    "label": "reranker prefixed vs text only, merged",
+    "a": "structural_merged/hybrid+rerank+prefix",
+    "b": "structural_merged/hybrid+rerank",
+    "metric": "mrr",
+    "a_value": 0.4549,
+    "b_value": 0.4234,
+    "diff": 0.0315,
+    "ci95": [
+      -0.0242,
+      0.0818
+    ],
+    "better": 16,
+    "worse": 3,
+    "same": 17,
+    "sign_test_p": 0.0044,
+    "within_noise": true
+  },
+  {
+    "label": "reranker (text only) vs hybrid, window",
+    "a": "window/hybrid+rerank",
+    "b": "window/hybrid",
+    "metric": "hit_rate@1",
+    "a_value": 0.3056,
+    "b_value": 0.3889,
+    "diff": -0.0833,
+    "ci95": [
+      -0.25,
+      0.0833
+    ],
+    "better": 3,
+    "worse": 6,
+    "same": 27,
+    "sign_test_p": 0.5078,
+    "within_noise": true
+  },
+  {
+    "label": "reranker (text only) vs hybrid, window",
+    "a": "window/hybrid+rerank",
+    "b": "window/hybrid",
+    "metric": "mrr",
+    "a_value": 0.4488,
+    "b_value": 0.5151,
+    "diff": -0.0662,
+    "ci95": [
+      -0.1831,
+      0.0446
+    ],
+    "better": 10,
+    "worse": 10,
+    "same": 16,
+    "sign_test_p": 1.0,
+    "within_noise": true
+  },
+  {
+    "label": "reranker (prefixed) vs hybrid, window",
+    "a": "window/hybrid+rerank+prefix",
+    "b": "window/hybrid",
+    "metric": "hit_rate@1",
+    "a_value": 0.2778,
+    "b_value": 0.3889,
+    "diff": -0.1111,
+    "ci95": [
+      -0.2778,
+      0.0556
+    ],
+    "better": 3,
+    "worse": 7,
+    "same": 26,
+    "sign_test_p": 0.3438,
+    "within_noise": true
+  },
+  {
+    "label": "reranker (prefixed) vs hybrid, window",
+    "a": "window/hybrid+rerank+prefix",
+    "b": "window/hybrid",
+    "metric": "mrr",
+    "a_value": 0.4415,
+    "b_value": 0.5151,
+    "diff": -0.0736,
+    "ci95": [
+      -0.1919,
+      0.0393
+    ],
+    "better": 11,
+    "worse": 11,
+    "same": 14,
+    "sign_test_p": 1.0,
+    "within_noise": true
+  },
+  {
+    "label": "reranker prefixed vs text only, window",
+    "a": "window/hybrid+rerank+prefix",
+    "b": "window/hybrid+rerank",
+    "metric": "hit_rate@1",
+    "a_value": 0.2778,
+    "b_value": 0.3056,
+    "diff": -0.0278,
+    "ci95": [
+      -0.0833,
+      0.0
+    ],
+    "better": 0,
+    "worse": 1,
+    "same": 35,
+    "sign_test_p": 1.0,
+    "within_noise": true
+  },
+  {
+    "label": "reranker prefixed vs text only, window",
+    "a": "window/hybrid+rerank+prefix",
+    "b": "window/hybrid+rerank",
+    "metric": "mrr",
+    "a_value": 0.4415,
+    "b_value": 0.4488,
+    "diff": -0.0073,
+    "ci95": [
+      -0.0463,
+      0.0232
+    ],
+    "better": 5,
+    "worse": 4,
+    "same": 27,
+    "sign_test_p": 1.0,
+    "within_noise": true
+  },
+  {
+    "label": "shipped configuration vs best other cell by MRR",
+    "a": "structural_merged/hybrid+cap",
+    "b": "structural/hybrid+cap",
+    "metric": "hit_rate@1",
+    "a_value": 0.4167,
+    "b_value": 0.3889,
+    "diff": 0.0278,
+    "ci95": [
+      -0.0556,
+      0.1111
+    ],
+    "better": 2,
+    "worse": 1,
+    "same": 33,
+    "sign_test_p": 1.0,
+    "within_noise": true
+  },
+  {
+    "label": "shipped configuration vs best other cell by MRR",
+    "a": "structural_merged/hybrid+cap",
+    "b": "structural/hybrid+cap",
+    "metric": "hit_rate@5",
+    "a_value": 0.8056,
+    "b_value": 0.75,
+    "diff": 0.0556,
+    "ci95": [
+      -0.0556,
+      0.1667
+    ],
+    "better": 3,
+    "worse": 1,
+    "same": 32,
+    "sign_test_p": 0.625,
+    "within_noise": true
+  },
+  {
+    "label": "shipped configuration vs best other cell by MRR",
+    "a": "structural_merged/hybrid+cap",
+    "b": "structural/hybrid+cap",
+    "metric": "mrr",
+    "a_value": 0.5767,
+    "b_value": 0.5679,
+    "diff": 0.0087,
+    "ci95": [
+      -0.0394,
+      0.059
+    ],
+    "better": 7,
+    "worse": 4,
+    "same": 25,
+    "sign_test_p": 0.5488,
+    "within_noise": true
+  }
+]

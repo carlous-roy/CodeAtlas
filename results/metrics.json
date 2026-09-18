@@ -1,123 +1,2135 @@
-[
-  {
-    "recall@1": 0.1388888888888889,
-    "recall@3": 0.3055555555555556,
-    "recall@5": 0.4444444444444444,
-    "recall@10": 0.5833333333333334,
-    "mrr": 0.25555555555555554,
-    "ndcg@10": 0.3423918876628237,
-    "strategy": "bm25",
-    "chunking": "structural_merged",
-    "n_chunks": 371
-  },
-  {
-    "recall@1": 0.3888888888888889,
-    "recall@3": 0.7222222222222222,
-    "recall@5": 0.7777777777777778,
-    "recall@10": 0.7777777777777778,
-    "mrr": 0.5541666666666667,
-    "ndcg@10": 0.5773403193493797,
-    "strategy": "dense",
-    "chunking": "structural_merged",
-    "n_chunks": 371
-  },
-  {
-    "recall@1": 0.4166666666666667,
-    "recall@3": 0.6666666666666666,
-    "recall@5": 0.8055555555555556,
-    "recall@10": 0.8888888888888888,
-    "mrr": 0.5535493827160494,
-    "ndcg@10": 0.617934652051821,
-    "strategy": "hybrid",
-    "chunking": "structural_merged",
-    "n_chunks": 371
-  },
-  {
-    "recall@1": 0.3611111111111111,
-    "recall@3": 0.5833333333333334,
-    "recall@5": 0.7777777777777778,
-    "recall@10": 0.8888888888888888,
-    "mrr": 0.5197089947089947,
-    "ndcg@10": 0.5773917600022834,
-    "strategy": "hybrid+rerank",
-    "chunking": "structural_merged",
-    "n_chunks": 371
-  },
-  {
-    "recall@1": 0.1111111111111111,
-    "recall@3": 0.2222222222222222,
-    "recall@5": 0.5,
-    "recall@10": 0.6666666666666666,
-    "mrr": 0.2460537918871252,
-    "ndcg@10": 0.3621619668253131,
-    "strategy": "bm25",
-    "chunking": "window",
-    "n_chunks": 403
-  },
-  {
-    "recall@1": 0.3611111111111111,
-    "recall@3": 0.75,
-    "recall@5": 0.8055555555555556,
-    "recall@10": 0.8333333333333334,
-    "mrr": 0.5479938271604938,
-    "ndcg@10": 0.5941648149646666,
-    "strategy": "dense",
-    "chunking": "window",
-    "n_chunks": 403
-  },
-  {
-    "recall@1": 0.3055555555555556,
-    "recall@3": 0.6666666666666666,
-    "recall@5": 0.8055555555555556,
-    "recall@10": 0.8888888888888888,
-    "mrr": 0.5151234567901235,
-    "ndcg@10": 0.5959506450617276,
-    "strategy": "hybrid",
-    "chunking": "window",
-    "n_chunks": 403
-  },
-  {
-    "recall@1": 0.3055555555555556,
-    "recall@3": 0.5555555555555556,
-    "recall@5": 0.7222222222222222,
-    "recall@10": 0.8055555555555556,
-    "mrr": 0.458179012345679,
-    "ndcg@10": 0.5372972409207768,
-    "strategy": "hybrid+rerank",
-    "chunking": "window",
-    "n_chunks": 403
-  },
-  {
-    "recall@1": 0.08333333333333333,
-    "recall@3": 0.3333333333333333,
-    "recall@5": 0.5277777777777778,
-    "recall@10": 0.6388888888888888,
-    "mrr": 0.2511574074074074,
-    "ndcg@10": 0.3494600272610115,
-    "strategy": "bm25",
-    "chunking": "structural",
-    "n_chunks": 819
-  },
-  {
-    "recall@1": 0.3611111111111111,
-    "recall@3": 0.6111111111111112,
-    "recall@5": 0.75,
-    "recall@10": 0.8055555555555556,
-    "mrr": 0.5026234567901233,
-    "ndcg@10": 0.5609073821340413,
-    "strategy": "dense",
-    "chunking": "structural",
-    "n_chunks": 819
-  },
-  {
-    "recall@1": 0.25,
-    "recall@3": 0.6666666666666666,
-    "recall@5": 0.7222222222222222,
-    "recall@10": 0.8888888888888888,
-    "mrr": 0.47150573192239853,
-    "ndcg@10": 0.563304677700406,
-    "strategy": "hybrid",
-    "chunking": "structural",
-    "n_chunks": 819
-  }
-]
+{
+  "n_questions": 36,
+  "configurations": [
+    {
+      "key": "structural_merged/bm25",
+      "chunking": "structural_merged",
+      "strategy": "bm25",
+      "n_chunks": 942,
+      "per_file": null,
+      "n_questions": 36,
+      "metrics": {
+        "hit_rate@1": {
+          "value": 0.1389,
+          "ci95": [
+            0.0278,
+            0.25
+          ]
+        },
+        "hit_rate@3": {
+          "value": 0.5278,
+          "ci95": [
+            0.3611,
+            0.6944
+          ]
+        },
+        "hit_rate@5": {
+          "value": 0.6667,
+          "ci95": [
+            0.5,
+            0.8056
+          ]
+        },
+        "hit_rate@10": {
+          "value": 0.7778,
+          "ci95": [
+            0.6389,
+            0.9167
+          ]
+        },
+        "recall@1": {
+          "value": 0.0926,
+          "ci95": [
+            0.0231,
+            0.1852
+          ]
+        },
+        "recall@3": {
+          "value": 0.3796,
+          "ci95": [
+            0.25,
+            0.5093
+          ]
+        },
+        "recall@5": {
+          "value": 0.5278,
+          "ci95": [
+            0.3843,
+            0.662
+          ]
+        },
+        "recall@10": {
+          "value": 0.6343,
+          "ci95": [
+            0.5,
+            0.7593
+          ]
+        },
+        "mrr": {
+          "value": 0.3421,
+          "ci95": [
+            0.2454,
+            0.4481
+          ]
+        },
+        "ndcg@10": {
+          "value": 0.3893,
+          "ci95": [
+            0.2968,
+            0.4858
+          ]
+        }
+      },
+      "dev": {
+        "hit_rate@1": 0.1111,
+        "hit_rate@3": 0.5,
+        "hit_rate@5": 0.6111,
+        "hit_rate@10": 0.7222,
+        "recall@1": 0.0463,
+        "recall@3": 0.3704,
+        "recall@5": 0.4815,
+        "recall@10": 0.5648,
+        "mrr": 0.3167,
+        "ndcg@10": 0.3445,
+        "n": 18
+      },
+      "test": {
+        "hit_rate@1": 0.1667,
+        "hit_rate@3": 0.5556,
+        "hit_rate@5": 0.7222,
+        "hit_rate@10": 0.8333,
+        "recall@1": 0.1389,
+        "recall@3": 0.3889,
+        "recall@5": 0.5741,
+        "recall@10": 0.7037,
+        "mrr": 0.3676,
+        "ndcg@10": 0.4341,
+        "n": 18
+      },
+      "misses_at_5": [
+        "tf03",
+        "tf04",
+        "tf05",
+        "tf08",
+        "tf09",
+        "tf11",
+        "tf12",
+        "dl03",
+        "dl04",
+        "dl06",
+        "dl13",
+        "dl14"
+      ]
+    },
+    {
+      "key": "structural_merged/dense",
+      "chunking": "structural_merged",
+      "strategy": "dense",
+      "n_chunks": 942,
+      "per_file": null,
+      "n_questions": 36,
+      "metrics": {
+        "hit_rate@1": {
+          "value": 0.3889,
+          "ci95": [
+            0.2222,
+            0.5556
+          ]
+        },
+        "hit_rate@3": {
+          "value": 0.5833,
+          "ci95": [
+            0.4167,
+            0.75
+          ]
+        },
+        "hit_rate@5": {
+          "value": 0.8333,
+          "ci95": [
+            0.6944,
+            0.9444
+          ]
+        },
+        "hit_rate@10": {
+          "value": 0.8611,
+          "ci95": [
+            0.75,
+            0.9722
+          ]
+        },
+        "recall@1": {
+          "value": 0.287,
+          "ci95": [
+            0.162,
+            0.4167
+          ]
+        },
+        "recall@3": {
+          "value": 0.4236,
+          "ci95": [
+            0.2894,
+            0.5602
+          ]
+        },
+        "recall@5": {
+          "value": 0.6366,
+          "ci95": [
+            0.5162,
+            0.7547
+          ]
+        },
+        "recall@10": {
+          "value": 0.7199,
+          "ci95": [
+            0.5949,
+            0.838
+          ]
+        },
+        "mrr": {
+          "value": 0.5324,
+          "ci95": [
+            0.4056,
+            0.6611
+          ]
+        },
+        "ndcg@10": {
+          "value": 0.5316,
+          "ci95": [
+            0.4213,
+            0.6398
+          ]
+        }
+      },
+      "dev": {
+        "hit_rate@1": 0.3333,
+        "hit_rate@3": 0.5556,
+        "hit_rate@5": 0.7222,
+        "hit_rate@10": 0.7222,
+        "recall@1": 0.25,
+        "recall@3": 0.3935,
+        "recall@5": 0.5232,
+        "recall@10": 0.5694,
+        "mrr": 0.462,
+        "ndcg@10": 0.4418,
+        "n": 18
+      },
+      "test": {
+        "hit_rate@1": 0.4444,
+        "hit_rate@3": 0.6111,
+        "hit_rate@5": 0.9444,
+        "hit_rate@10": 1.0,
+        "recall@1": 0.3241,
+        "recall@3": 0.4537,
+        "recall@5": 0.75,
+        "recall@10": 0.8704,
+        "mrr": 0.6028,
+        "ndcg@10": 0.6213,
+        "n": 18
+      },
+      "misses_at_5": [
+        "tf09",
+        "tf10",
+        "tf12",
+        "dl06",
+        "dl14",
+        "gc05"
+      ]
+    },
+    {
+      "key": "structural_merged/hybrid",
+      "chunking": "structural_merged",
+      "strategy": "hybrid",
+      "n_chunks": 942,
+      "per_file": null,
+      "n_questions": 36,
+      "metrics": {
+        "hit_rate@1": {
+          "value": 0.4167,
+          "ci95": [
+            0.25,
+            0.5833
+          ]
+        },
+        "hit_rate@3": {
+          "value": 0.6667,
+          "ci95": [
+            0.5,
+            0.8056
+          ]
+        },
+        "hit_rate@5": {
+          "value": 0.7222,
+          "ci95": [
+            0.5833,
+            0.8611
+          ]
+        },
+        "hit_rate@10": {
+          "value": 0.8611,
+          "ci95": [
+            0.75,
+            0.9722
+          ]
+        },
+        "recall@1": {
+          "value": 0.2685,
+          "ci95": [
+            0.1528,
+            0.3889
+          ]
+        },
+        "recall@3": {
+          "value": 0.4954,
+          "ci95": [
+            0.3611,
+            0.6296
+          ]
+        },
+        "recall@5": {
+          "value": 0.5741,
+          "ci95": [
+            0.4398,
+            0.7083
+          ]
+        },
+        "recall@10": {
+          "value": 0.6944,
+          "ci95": [
+            0.5741,
+            0.8056
+          ]
+        },
+        "mrr": {
+          "value": 0.5473,
+          "ci95": [
+            0.4155,
+            0.6794
+          ]
+        },
+        "ndcg@10": {
+          "value": 0.5219,
+          "ci95": [
+            0.4136,
+            0.6277
+          ]
+        }
+      },
+      "dev": {
+        "hit_rate@1": 0.5556,
+        "hit_rate@3": 0.6111,
+        "hit_rate@5": 0.6111,
+        "hit_rate@10": 0.7778,
+        "recall@1": 0.3796,
+        "recall@3": 0.4537,
+        "recall@5": 0.4815,
+        "recall@10": 0.6111,
+        "mrr": 0.6037,
+        "ndcg@10": 0.5356,
+        "n": 18
+      },
+      "test": {
+        "hit_rate@1": 0.2778,
+        "hit_rate@3": 0.7222,
+        "hit_rate@5": 0.8333,
+        "hit_rate@10": 0.9444,
+        "recall@1": 0.1574,
+        "recall@3": 0.537,
+        "recall@5": 0.6667,
+        "recall@10": 0.7778,
+        "mrr": 0.4908,
+        "ndcg@10": 0.5082,
+        "n": 18
+      },
+      "misses_at_5": [
+        "tf03",
+        "tf08",
+        "tf09",
+        "tf12",
+        "dl04",
+        "dl06",
+        "dl13",
+        "dl14",
+        "gc05",
+        "pf02"
+      ]
+    },
+    {
+      "key": "structural_merged/hybrid+cap",
+      "chunking": "structural_merged",
+      "strategy": "hybrid+cap",
+      "n_chunks": 942,
+      "per_file": 1,
+      "n_questions": 36,
+      "metrics": {
+        "hit_rate@1": {
+          "value": 0.4167,
+          "ci95": [
+            0.25,
+            0.5833
+          ]
+        },
+        "hit_rate@3": {
+          "value": 0.6944,
+          "ci95": [
+            0.5556,
+            0.8333
+          ]
+        },
+        "hit_rate@5": {
+          "value": 0.8056,
+          "ci95": [
+            0.6667,
+            0.9167
+          ]
+        },
+        "hit_rate@10": {
+          "value": 0.8889,
+          "ci95": [
+            0.7778,
+            0.9722
+          ]
+        },
+        "recall@1": {
+          "value": 0.2685,
+          "ci95": [
+            0.1574,
+            0.3889
+          ]
+        },
+        "recall@3": {
+          "value": 0.5232,
+          "ci95": [
+            0.3935,
+            0.6528
+          ]
+        },
+        "recall@5": {
+          "value": 0.6528,
+          "ci95": [
+            0.5231,
+            0.7778
+          ]
+        },
+        "recall@10": {
+          "value": 0.7639,
+          "ci95": [
+            0.6481,
+            0.8704
+          ]
+        },
+        "mrr": {
+          "value": 0.5767,
+          "ci95": [
+            0.444,
+            0.7018
+          ]
+        },
+        "ndcg@10": {
+          "value": 0.5729,
+          "ci95": [
+            0.469,
+            0.6743
+          ]
+        }
+      },
+      "dev": {
+        "hit_rate@1": 0.5556,
+        "hit_rate@3": 0.6111,
+        "hit_rate@5": 0.6667,
+        "hit_rate@10": 0.7778,
+        "recall@1": 0.3796,
+        "recall@3": 0.4537,
+        "recall@5": 0.5278,
+        "recall@10": 0.6667,
+        "mrr": 0.6144,
+        "ndcg@10": 0.5691,
+        "n": 18
+      },
+      "test": {
+        "hit_rate@1": 0.2778,
+        "hit_rate@3": 0.7778,
+        "hit_rate@5": 0.9444,
+        "hit_rate@10": 1.0,
+        "recall@1": 0.1574,
+        "recall@3": 0.5926,
+        "recall@5": 0.7778,
+        "recall@10": 0.8611,
+        "mrr": 0.5389,
+        "ndcg@10": 0.5766,
+        "n": 18
+      },
+      "misses_at_5": [
+        "tf03",
+        "tf08",
+        "tf09",
+        "tf12",
+        "dl06",
+        "dl13",
+        "gc05"
+      ]
+    },
+    {
+      "key": "structural_merged/hybrid+rerank",
+      "chunking": "structural_merged",
+      "strategy": "hybrid+rerank",
+      "n_chunks": 942,
+      "per_file": null,
+      "n_questions": 36,
+      "metrics": {
+        "hit_rate@1": {
+          "value": 0.2778,
+          "ci95": [
+            0.1389,
+            0.4167
+          ]
+        },
+        "hit_rate@3": {
+          "value": 0.5,
+          "ci95": [
+            0.3333,
+            0.6667
+          ]
+        },
+        "hit_rate@5": {
+          "value": 0.7222,
+          "ci95": [
+            0.5556,
+            0.8611
+          ]
+        },
+        "hit_rate@10": {
+          "value": 0.8056,
+          "ci95": [
+            0.6667,
+            0.9167
+          ]
+        },
+        "recall@1": {
+          "value": 0.1852,
+          "ci95": [
+            0.0833,
+            0.3009
+          ]
+        },
+        "recall@3": {
+          "value": 0.3611,
+          "ci95": [
+            0.2315,
+            0.4954
+          ]
+        },
+        "recall@5": {
+          "value": 0.5509,
+          "ci95": [
+            0.4167,
+            0.6806
+          ]
+        },
+        "recall@10": {
+          "value": 0.6435,
+          "ci95": [
+            0.5139,
+            0.7639
+          ]
+        },
+        "mrr": {
+          "value": 0.4234,
+          "ci95": [
+            0.3019,
+            0.5503
+          ]
+        },
+        "ndcg@10": {
+          "value": 0.4326,
+          "ci95": [
+            0.3318,
+            0.5356
+          ]
+        }
+      },
+      "dev": {
+        "hit_rate@1": 0.3333,
+        "hit_rate@3": 0.4444,
+        "hit_rate@5": 0.6667,
+        "hit_rate@10": 0.7222,
+        "recall@1": 0.2407,
+        "recall@3": 0.3148,
+        "recall@5": 0.537,
+        "recall@10": 0.5926,
+        "mrr": 0.4394,
+        "ndcg@10": 0.4406,
+        "n": 18
+      },
+      "test": {
+        "hit_rate@1": 0.2222,
+        "hit_rate@3": 0.5556,
+        "hit_rate@5": 0.7778,
+        "hit_rate@10": 0.8889,
+        "recall@1": 0.1296,
+        "recall@3": 0.4074,
+        "recall@5": 0.5648,
+        "recall@10": 0.6944,
+        "mrr": 0.4075,
+        "ndcg@10": 0.4246,
+        "n": 18
+      },
+      "misses_at_5": [
+        "tf03",
+        "tf05",
+        "tf08",
+        "tf09",
+        "tf11",
+        "tf12",
+        "dl06",
+        "dl09",
+        "gc05",
+        "pf02"
+      ]
+    },
+    {
+      "key": "structural_merged/hybrid+rerank+prefix",
+      "chunking": "structural_merged",
+      "strategy": "hybrid+rerank+prefix",
+      "n_chunks": 942,
+      "per_file": null,
+      "n_questions": 36,
+      "metrics": {
+        "hit_rate@1": {
+          "value": 0.25,
+          "ci95": [
+            0.1111,
+            0.3889
+          ]
+        },
+        "hit_rate@3": {
+          "value": 0.6111,
+          "ci95": [
+            0.4444,
+            0.7778
+          ]
+        },
+        "hit_rate@5": {
+          "value": 0.7778,
+          "ci95": [
+            0.6389,
+            0.9167
+          ]
+        },
+        "hit_rate@10": {
+          "value": 0.8889,
+          "ci95": [
+            0.7778,
+            0.9722
+          ]
+        },
+        "recall@1": {
+          "value": 0.1759,
+          "ci95": [
+            0.0787,
+            0.2917
+          ]
+        },
+        "recall@3": {
+          "value": 0.4583,
+          "ci95": [
+            0.3194,
+            0.5972
+          ]
+        },
+        "recall@5": {
+          "value": 0.5856,
+          "ci95": [
+            0.456,
+            0.7153
+          ]
+        },
+        "recall@10": {
+          "value": 0.7199,
+          "ci95": [
+            0.5995,
+            0.831
+          ]
+        },
+        "mrr": {
+          "value": 0.4549,
+          "ci95": [
+            0.3417,
+            0.5721
+          ]
+        },
+        "ndcg@10": {
+          "value": 0.4777,
+          "ci95": [
+            0.3834,
+            0.5723
+          ]
+        }
+      },
+      "dev": {
+        "hit_rate@1": 0.2778,
+        "hit_rate@3": 0.5556,
+        "hit_rate@5": 0.7222,
+        "hit_rate@10": 0.7778,
+        "recall@1": 0.213,
+        "recall@3": 0.4074,
+        "recall@5": 0.5509,
+        "recall@10": 0.6065,
+        "mrr": 0.4394,
+        "ndcg@10": 0.4436,
+        "n": 18
+      },
+      "test": {
+        "hit_rate@1": 0.2222,
+        "hit_rate@3": 0.6667,
+        "hit_rate@5": 0.8333,
+        "hit_rate@10": 1.0,
+        "recall@1": 0.1389,
+        "recall@3": 0.5093,
+        "recall@5": 0.6204,
+        "recall@10": 0.8333,
+        "mrr": 0.4704,
+        "ndcg@10": 0.5118,
+        "n": 18
+      },
+      "misses_at_5": [
+        "tf05",
+        "tf09",
+        "tf11",
+        "tf12",
+        "dl06",
+        "dl09",
+        "gc05",
+        "pf02"
+      ]
+    },
+    {
+      "key": "structural/bm25",
+      "chunking": "structural",
+      "strategy": "bm25",
+      "n_chunks": 1281,
+      "per_file": null,
+      "n_questions": 36,
+      "metrics": {
+        "hit_rate@1": {
+          "value": 0.25,
+          "ci95": [
+            0.1111,
+            0.3889
+          ]
+        },
+        "hit_rate@3": {
+          "value": 0.5,
+          "ci95": [
+            0.3333,
+            0.6667
+          ]
+        },
+        "hit_rate@5": {
+          "value": 0.5556,
+          "ci95": [
+            0.3889,
+            0.7222
+          ]
+        },
+        "hit_rate@10": {
+          "value": 0.75,
+          "ci95": [
+            0.6111,
+            0.8889
+          ]
+        },
+        "recall@1": {
+          "value": 0.1481,
+          "ci95": [
+            0.0648,
+            0.2454
+          ]
+        },
+        "recall@3": {
+          "value": 0.3657,
+          "ci95": [
+            0.2361,
+            0.5
+          ]
+        },
+        "recall@5": {
+          "value": 0.4491,
+          "ci95": [
+            0.3056,
+            0.5926
+          ]
+        },
+        "recall@10": {
+          "value": 0.5972,
+          "ci95": [
+            0.463,
+            0.7268
+          ]
+        },
+        "mrr": {
+          "value": 0.3823,
+          "ci95": [
+            0.2643,
+            0.5104
+          ]
+        },
+        "ndcg@10": {
+          "value": 0.3899,
+          "ci95": [
+            0.2895,
+            0.492
+          ]
+        }
+      },
+      "dev": {
+        "hit_rate@1": 0.2778,
+        "hit_rate@3": 0.5,
+        "hit_rate@5": 0.5,
+        "hit_rate@10": 0.6667,
+        "recall@1": 0.1296,
+        "recall@3": 0.3704,
+        "recall@5": 0.3982,
+        "recall@10": 0.5093,
+        "mrr": 0.3866,
+        "ndcg@10": 0.3556,
+        "n": 18
+      },
+      "test": {
+        "hit_rate@1": 0.2222,
+        "hit_rate@3": 0.5,
+        "hit_rate@5": 0.6111,
+        "hit_rate@10": 0.8333,
+        "recall@1": 0.1667,
+        "recall@3": 0.3611,
+        "recall@5": 0.5,
+        "recall@10": 0.6852,
+        "mrr": 0.3781,
+        "ndcg@10": 0.4241,
+        "n": 18
+      },
+      "misses_at_5": [
+        "tf03",
+        "tf04",
+        "tf05",
+        "tf08",
+        "tf09",
+        "tf11",
+        "tf12",
+        "dl03",
+        "dl04",
+        "dl06",
+        "dl10",
+        "dl11",
+        "dl13",
+        "dl14",
+        "gc01",
+        "pf03"
+      ]
+    },
+    {
+      "key": "structural/dense",
+      "chunking": "structural",
+      "strategy": "dense",
+      "n_chunks": 1281,
+      "per_file": null,
+      "n_questions": 36,
+      "metrics": {
+        "hit_rate@1": {
+          "value": 0.3056,
+          "ci95": [
+            0.1667,
+            0.4451
+          ]
+        },
+        "hit_rate@3": {
+          "value": 0.5556,
+          "ci95": [
+            0.3889,
+            0.7222
+          ]
+        },
+        "hit_rate@5": {
+          "value": 0.6944,
+          "ci95": [
+            0.5278,
+            0.8333
+          ]
+        },
+        "hit_rate@10": {
+          "value": 0.8611,
+          "ci95": [
+            0.75,
+            0.9722
+          ]
+        },
+        "recall@1": {
+          "value": 0.2176,
+          "ci95": [
+            0.1065,
+            0.3426
+          ]
+        },
+        "recall@3": {
+          "value": 0.4167,
+          "ci95": [
+            0.2824,
+            0.5556
+          ]
+        },
+        "recall@5": {
+          "value": 0.5694,
+          "ci95": [
+            0.4259,
+            0.7083
+          ]
+        },
+        "recall@10": {
+          "value": 0.7245,
+          "ci95": [
+            0.6019,
+            0.8403
+          ]
+        },
+        "mrr": {
+          "value": 0.4743,
+          "ci95": [
+            0.3505,
+            0.6016
+          ]
+        },
+        "ndcg@10": {
+          "value": 0.5005,
+          "ci95": [
+            0.3932,
+            0.608
+          ]
+        }
+      },
+      "dev": {
+        "hit_rate@1": 0.3333,
+        "hit_rate@3": 0.5,
+        "hit_rate@5": 0.5556,
+        "hit_rate@10": 0.7222,
+        "recall@1": 0.25,
+        "recall@3": 0.3796,
+        "recall@5": 0.463,
+        "recall@10": 0.5694,
+        "mrr": 0.4468,
+        "ndcg@10": 0.4432,
+        "n": 18
+      },
+      "test": {
+        "hit_rate@1": 0.2778,
+        "hit_rate@3": 0.6111,
+        "hit_rate@5": 0.8333,
+        "hit_rate@10": 1.0,
+        "recall@1": 0.1852,
+        "recall@3": 0.4537,
+        "recall@5": 0.6759,
+        "recall@10": 0.8796,
+        "mrr": 0.5018,
+        "ndcg@10": 0.5578,
+        "n": 18
+      },
+      "misses_at_5": [
+        "tf08",
+        "tf09",
+        "tf10",
+        "tf12",
+        "dl06",
+        "dl07",
+        "dl09",
+        "dl11",
+        "dl14",
+        "gc05",
+        "pf04"
+      ]
+    },
+    {
+      "key": "structural/hybrid",
+      "chunking": "structural",
+      "strategy": "hybrid",
+      "n_chunks": 1281,
+      "per_file": null,
+      "n_questions": 36,
+      "metrics": {
+        "hit_rate@1": {
+          "value": 0.3889,
+          "ci95": [
+            0.2222,
+            0.5556
+          ]
+        },
+        "hit_rate@3": {
+          "value": 0.6111,
+          "ci95": [
+            0.4444,
+            0.7778
+          ]
+        },
+        "hit_rate@5": {
+          "value": 0.6389,
+          "ci95": [
+            0.4722,
+            0.8056
+          ]
+        },
+        "hit_rate@10": {
+          "value": 0.8333,
+          "ci95": [
+            0.6944,
+            0.9444
+          ]
+        },
+        "recall@1": {
+          "value": 0.2454,
+          "ci95": [
+            0.1389,
+            0.3611
+          ]
+        },
+        "recall@3": {
+          "value": 0.4444,
+          "ci95": [
+            0.3148,
+            0.5787
+          ]
+        },
+        "recall@5": {
+          "value": 0.4954,
+          "ci95": [
+            0.3611,
+            0.6343
+          ]
+        },
+        "recall@10": {
+          "value": 0.6713,
+          "ci95": [
+            0.5463,
+            0.787
+          ]
+        },
+        "mrr": {
+          "value": 0.5207,
+          "ci95": [
+            0.3898,
+            0.6544
+          ]
+        },
+        "ndcg@10": {
+          "value": 0.4981,
+          "ci95": [
+            0.3956,
+            0.6005
+          ]
+        }
+      },
+      "dev": {
+        "hit_rate@1": 0.5556,
+        "hit_rate@3": 0.6111,
+        "hit_rate@5": 0.6111,
+        "hit_rate@10": 0.7222,
+        "recall@1": 0.3518,
+        "recall@3": 0.4537,
+        "recall@5": 0.4815,
+        "recall@10": 0.537,
+        "mrr": 0.5981,
+        "ndcg@10": 0.5044,
+        "n": 18
+      },
+      "test": {
+        "hit_rate@1": 0.2222,
+        "hit_rate@3": 0.6111,
+        "hit_rate@5": 0.6667,
+        "hit_rate@10": 0.9444,
+        "recall@1": 0.1389,
+        "recall@3": 0.4352,
+        "recall@5": 0.5093,
+        "recall@10": 0.8056,
+        "mrr": 0.4433,
+        "ndcg@10": 0.4918,
+        "n": 18
+      },
+      "misses_at_5": [
+        "tf03",
+        "tf04",
+        "tf05",
+        "tf08",
+        "tf09",
+        "tf12",
+        "dl03",
+        "dl04",
+        "dl06",
+        "dl13",
+        "dl14",
+        "gc05",
+        "pf02"
+      ]
+    },
+    {
+      "key": "structural/hybrid+cap",
+      "chunking": "structural",
+      "strategy": "hybrid+cap",
+      "n_chunks": 1281,
+      "per_file": 1,
+      "n_questions": 36,
+      "metrics": {
+        "hit_rate@1": {
+          "value": 0.3889,
+          "ci95": [
+            0.2222,
+            0.5556
+          ]
+        },
+        "hit_rate@3": {
+          "value": 0.6944,
+          "ci95": [
+            0.5278,
+            0.8333
+          ]
+        },
+        "hit_rate@5": {
+          "value": 0.75,
+          "ci95": [
+            0.6111,
+            0.8889
+          ]
+        },
+        "hit_rate@10": {
+          "value": 0.9167,
+          "ci95": [
+            0.8056,
+            1.0
+          ]
+        },
+        "recall@1": {
+          "value": 0.2454,
+          "ci95": [
+            0.1389,
+            0.3611
+          ]
+        },
+        "recall@3": {
+          "value": 0.537,
+          "ci95": [
+            0.4028,
+            0.6713
+          ]
+        },
+        "recall@5": {
+          "value": 0.5995,
+          "ci95": [
+            0.4653,
+            0.7292
+          ]
+        },
+        "recall@10": {
+          "value": 0.8287,
+          "ci95": [
+            0.7222,
+            0.9213
+          ]
+        },
+        "mrr": {
+          "value": 0.5679,
+          "ci95": [
+            0.4473,
+            0.6917
+          ]
+        },
+        "ndcg@10": {
+          "value": 0.589,
+          "ci95": [
+            0.49,
+            0.6824
+          ]
+        }
+      },
+      "dev": {
+        "hit_rate@1": 0.5556,
+        "hit_rate@3": 0.6111,
+        "hit_rate@5": 0.6667,
+        "hit_rate@10": 0.8333,
+        "recall@1": 0.3518,
+        "recall@3": 0.4815,
+        "recall@5": 0.4954,
+        "recall@10": 0.7222,
+        "mrr": 0.6178,
+        "ndcg@10": 0.5783,
+        "n": 18
+      },
+      "test": {
+        "hit_rate@1": 0.2222,
+        "hit_rate@3": 0.7778,
+        "hit_rate@5": 0.8333,
+        "hit_rate@10": 1.0,
+        "recall@1": 0.1389,
+        "recall@3": 0.5926,
+        "recall@5": 0.7037,
+        "recall@10": 0.9352,
+        "mrr": 0.5181,
+        "ndcg@10": 0.5997,
+        "n": 18
+      },
+      "misses_at_5": [
+        "tf03",
+        "tf04",
+        "tf09",
+        "tf12",
+        "dl04",
+        "dl06",
+        "dl13",
+        "dl14",
+        "gc05"
+      ]
+    },
+    {
+      "key": "structural/hybrid+rerank",
+      "chunking": "structural",
+      "strategy": "hybrid+rerank",
+      "n_chunks": 1281,
+      "per_file": null,
+      "n_questions": 36,
+      "metrics": {
+        "hit_rate@1": {
+          "value": 0.3056,
+          "ci95": [
+            0.1667,
+            0.4722
+          ]
+        },
+        "hit_rate@3": {
+          "value": 0.5,
+          "ci95": [
+            0.3333,
+            0.6667
+          ]
+        },
+        "hit_rate@5": {
+          "value": 0.6667,
+          "ci95": [
+            0.5,
+            0.8056
+          ]
+        },
+        "hit_rate@10": {
+          "value": 0.8056,
+          "ci95": [
+            0.6667,
+            0.9167
+          ]
+        },
+        "recall@1": {
+          "value": 0.213,
+          "ci95": [
+            0.1018,
+            0.338
+          ]
+        },
+        "recall@3": {
+          "value": 0.338,
+          "ci95": [
+            0.2176,
+            0.4676
+          ]
+        },
+        "recall@5": {
+          "value": 0.5046,
+          "ci95": [
+            0.3657,
+            0.6435
+          ]
+        },
+        "recall@10": {
+          "value": 0.6597,
+          "ci95": [
+            0.5278,
+            0.7824
+          ]
+        },
+        "mrr": {
+          "value": 0.4364,
+          "ci95": [
+            0.3128,
+            0.5628
+          ]
+        },
+        "ndcg@10": {
+          "value": 0.4434,
+          "ci95": [
+            0.3391,
+            0.5476
+          ]
+        }
+      },
+      "dev": {
+        "hit_rate@1": 0.3333,
+        "hit_rate@3": 0.5,
+        "hit_rate@5": 0.6667,
+        "hit_rate@10": 0.7222,
+        "recall@1": 0.2407,
+        "recall@3": 0.3241,
+        "recall@5": 0.4907,
+        "recall@10": 0.5787,
+        "mrr": 0.4394,
+        "ndcg@10": 0.4253,
+        "n": 18
+      },
+      "test": {
+        "hit_rate@1": 0.2778,
+        "hit_rate@3": 0.5,
+        "hit_rate@5": 0.6667,
+        "hit_rate@10": 0.8889,
+        "recall@1": 0.1852,
+        "recall@3": 0.3518,
+        "recall@5": 0.5185,
+        "recall@10": 0.7407,
+        "mrr": 0.4334,
+        "ndcg@10": 0.4616,
+        "n": 18
+      },
+      "misses_at_5": [
+        "tf02",
+        "tf03",
+        "tf04",
+        "tf05",
+        "tf08",
+        "tf09",
+        "tf11",
+        "tf12",
+        "dl06",
+        "dl09",
+        "gc05",
+        "pf02"
+      ]
+    },
+    {
+      "key": "structural/hybrid+rerank+prefix",
+      "chunking": "structural",
+      "strategy": "hybrid+rerank+prefix",
+      "n_chunks": 1281,
+      "per_file": null,
+      "n_questions": 36,
+      "metrics": {
+        "hit_rate@1": {
+          "value": 0.2778,
+          "ci95": [
+            0.1389,
+            0.4167
+          ]
+        },
+        "hit_rate@3": {
+          "value": 0.5833,
+          "ci95": [
+            0.4167,
+            0.75
+          ]
+        },
+        "hit_rate@5": {
+          "value": 0.7778,
+          "ci95": [
+            0.6389,
+            0.9167
+          ]
+        },
+        "hit_rate@10": {
+          "value": 0.8889,
+          "ci95": [
+            0.7778,
+            0.9722
+          ]
+        },
+        "recall@1": {
+          "value": 0.2037,
+          "ci95": [
+            0.0972,
+            0.3241
+          ]
+        },
+        "recall@3": {
+          "value": 0.4491,
+          "ci95": [
+            0.3102,
+            0.5926
+          ]
+        },
+        "recall@5": {
+          "value": 0.5718,
+          "ci95": [
+            0.4444,
+            0.6991
+          ]
+        },
+        "recall@10": {
+          "value": 0.7199,
+          "ci95": [
+            0.6019,
+            0.8287
+          ]
+        },
+        "mrr": {
+          "value": 0.4611,
+          "ci95": [
+            0.3468,
+            0.5817
+          ]
+        },
+        "ndcg@10": {
+          "value": 0.4818,
+          "ci95": [
+            0.3852,
+            0.5806
+          ]
+        }
+      },
+      "dev": {
+        "hit_rate@1": 0.3333,
+        "hit_rate@3": 0.5556,
+        "hit_rate@5": 0.7778,
+        "hit_rate@10": 0.7778,
+        "recall@1": 0.2407,
+        "recall@3": 0.4074,
+        "recall@5": 0.5509,
+        "recall@10": 0.6343,
+        "mrr": 0.4796,
+        "ndcg@10": 0.4706,
+        "n": 18
+      },
+      "test": {
+        "hit_rate@1": 0.2222,
+        "hit_rate@3": 0.6111,
+        "hit_rate@5": 0.7778,
+        "hit_rate@10": 1.0,
+        "recall@1": 0.1667,
+        "recall@3": 0.4907,
+        "recall@5": 0.5926,
+        "recall@10": 0.8056,
+        "mrr": 0.4427,
+        "ndcg@10": 0.4931,
+        "n": 18
+      },
+      "misses_at_5": [
+        "tf02",
+        "tf03",
+        "tf05",
+        "tf09",
+        "tf12",
+        "dl06",
+        "dl09",
+        "gc05"
+      ]
+    },
+    {
+      "key": "window/bm25",
+      "chunking": "window",
+      "strategy": "bm25",
+      "n_chunks": 919,
+      "per_file": null,
+      "n_questions": 36,
+      "metrics": {
+        "hit_rate@1": {
+          "value": 0.2222,
+          "ci95": [
+            0.0833,
+            0.3611
+          ]
+        },
+        "hit_rate@3": {
+          "value": 0.5,
+          "ci95": [
+            0.3333,
+            0.6667
+          ]
+        },
+        "hit_rate@5": {
+          "value": 0.6389,
+          "ci95": [
+            0.4722,
+            0.7778
+          ]
+        },
+        "hit_rate@10": {
+          "value": 0.7222,
+          "ci95": [
+            0.5833,
+            0.8611
+          ]
+        },
+        "recall@1": {
+          "value": 0.1204,
+          "ci95": [
+            0.0509,
+            0.2037
+          ]
+        },
+        "recall@3": {
+          "value": 0.3657,
+          "ci95": [
+            0.2361,
+            0.5
+          ]
+        },
+        "recall@5": {
+          "value": 0.5046,
+          "ci95": [
+            0.3657,
+            0.6435
+          ]
+        },
+        "recall@10": {
+          "value": 0.5694,
+          "ci95": [
+            0.4352,
+            0.7037
+          ]
+        },
+        "mrr": {
+          "value": 0.3848,
+          "ci95": [
+            0.2662,
+            0.5063
+          ]
+        },
+        "ndcg@10": {
+          "value": 0.3863,
+          "ci95": [
+            0.2843,
+            0.4912
+          ]
+        }
+      },
+      "dev": {
+        "hit_rate@1": 0.2222,
+        "hit_rate@3": 0.3889,
+        "hit_rate@5": 0.6111,
+        "hit_rate@10": 0.6667,
+        "recall@1": 0.1018,
+        "recall@3": 0.2593,
+        "recall@5": 0.4815,
+        "recall@10": 0.5093,
+        "mrr": 0.3505,
+        "ndcg@10": 0.3347,
+        "n": 18
+      },
+      "test": {
+        "hit_rate@1": 0.2222,
+        "hit_rate@3": 0.6111,
+        "hit_rate@5": 0.6667,
+        "hit_rate@10": 0.7778,
+        "recall@1": 0.1389,
+        "recall@3": 0.4722,
+        "recall@5": 0.5278,
+        "recall@10": 0.6296,
+        "mrr": 0.419,
+        "ndcg@10": 0.4378,
+        "n": 18
+      },
+      "misses_at_5": [
+        "tf03",
+        "tf04",
+        "tf05",
+        "tf08",
+        "tf09",
+        "tf11",
+        "tf12",
+        "dl04",
+        "dl06",
+        "dl10",
+        "dl11",
+        "dl13",
+        "dl14"
+      ]
+    },
+    {
+      "key": "window/dense",
+      "chunking": "window",
+      "strategy": "dense",
+      "n_chunks": 919,
+      "per_file": null,
+      "n_questions": 36,
+      "metrics": {
+        "hit_rate@1": {
+          "value": 0.3611,
+          "ci95": [
+            0.2222,
+            0.5278
+          ]
+        },
+        "hit_rate@3": {
+          "value": 0.6389,
+          "ci95": [
+            0.4722,
+            0.8056
+          ]
+        },
+        "hit_rate@5": {
+          "value": 0.75,
+          "ci95": [
+            0.6111,
+            0.8889
+          ]
+        },
+        "hit_rate@10": {
+          "value": 0.8333,
+          "ci95": [
+            0.6944,
+            0.9444
+          ]
+        },
+        "recall@1": {
+          "value": 0.2546,
+          "ci95": [
+            0.1389,
+            0.3843
+          ]
+        },
+        "recall@3": {
+          "value": 0.456,
+          "ci95": [
+            0.3241,
+            0.5926
+          ]
+        },
+        "recall@5": {
+          "value": 0.5903,
+          "ci95": [
+            0.456,
+            0.72
+          ]
+        },
+        "recall@10": {
+          "value": 0.6968,
+          "ci95": [
+            0.5671,
+            0.8148
+          ]
+        },
+        "mrr": {
+          "value": 0.5137,
+          "ci95": [
+            0.3873,
+            0.6429
+          ]
+        },
+        "ndcg@10": {
+          "value": 0.5085,
+          "ci95": [
+            0.3976,
+            0.6195
+          ]
+        }
+      },
+      "dev": {
+        "hit_rate@1": 0.3333,
+        "hit_rate@3": 0.5556,
+        "hit_rate@5": 0.6111,
+        "hit_rate@10": 0.6667,
+        "recall@1": 0.25,
+        "recall@3": 0.3657,
+        "recall@5": 0.4676,
+        "recall@10": 0.5232,
+        "mrr": 0.4426,
+        "ndcg@10": 0.416,
+        "n": 18
+      },
+      "test": {
+        "hit_rate@1": 0.3889,
+        "hit_rate@3": 0.7222,
+        "hit_rate@5": 0.8889,
+        "hit_rate@10": 1.0,
+        "recall@1": 0.2593,
+        "recall@3": 0.5463,
+        "recall@5": 0.713,
+        "recall@10": 0.8704,
+        "mrr": 0.5849,
+        "ndcg@10": 0.601,
+        "n": 18
+      },
+      "misses_at_5": [
+        "tf09",
+        "tf12",
+        "dl04",
+        "dl06",
+        "dl07",
+        "dl09",
+        "dl14",
+        "gc05",
+        "pf04"
+      ]
+    },
+    {
+      "key": "window/hybrid",
+      "chunking": "window",
+      "strategy": "hybrid",
+      "n_chunks": 919,
+      "per_file": null,
+      "n_questions": 36,
+      "metrics": {
+        "hit_rate@1": {
+          "value": 0.3889,
+          "ci95": [
+            0.25,
+            0.5556
+          ]
+        },
+        "hit_rate@3": {
+          "value": 0.6111,
+          "ci95": [
+            0.4444,
+            0.7778
+          ]
+        },
+        "hit_rate@5": {
+          "value": 0.6944,
+          "ci95": [
+            0.5278,
+            0.8333
+          ]
+        },
+        "hit_rate@10": {
+          "value": 0.8056,
+          "ci95": [
+            0.6667,
+            0.9167
+          ]
+        },
+        "recall@1": {
+          "value": 0.2454,
+          "ci95": [
+            0.1389,
+            0.3611
+          ]
+        },
+        "recall@3": {
+          "value": 0.4306,
+          "ci95": [
+            0.3056,
+            0.5602
+          ]
+        },
+        "recall@5": {
+          "value": 0.5,
+          "ci95": [
+            0.3704,
+            0.625
+          ]
+        },
+        "recall@10": {
+          "value": 0.6528,
+          "ci95": [
+            0.5231,
+            0.7778
+          ]
+        },
+        "mrr": {
+          "value": 0.5151,
+          "ci95": [
+            0.3818,
+            0.6507
+          ]
+        },
+        "ndcg@10": {
+          "value": 0.4867,
+          "ci95": [
+            0.3765,
+            0.5938
+          ]
+        }
+      },
+      "dev": {
+        "hit_rate@1": 0.4444,
+        "hit_rate@3": 0.6111,
+        "hit_rate@5": 0.6111,
+        "hit_rate@10": 0.7222,
+        "recall@1": 0.3056,
+        "recall@3": 0.4352,
+        "recall@5": 0.4352,
+        "recall@10": 0.5833,
+        "mrr": 0.5334,
+        "ndcg@10": 0.4887,
+        "n": 18
+      },
+      "test": {
+        "hit_rate@1": 0.3333,
+        "hit_rate@3": 0.6111,
+        "hit_rate@5": 0.7778,
+        "hit_rate@10": 0.8889,
+        "recall@1": 0.1852,
+        "recall@3": 0.4259,
+        "recall@5": 0.5648,
+        "recall@10": 0.7222,
+        "mrr": 0.4968,
+        "ndcg@10": 0.4848,
+        "n": 18
+      },
+      "misses_at_5": [
+        "tf03",
+        "tf04",
+        "tf08",
+        "tf09",
+        "tf12",
+        "dl04",
+        "dl06",
+        "dl10",
+        "dl13",
+        "dl14",
+        "gc05"
+      ]
+    },
+    {
+      "key": "window/hybrid+cap",
+      "chunking": "window",
+      "strategy": "hybrid+cap",
+      "n_chunks": 919,
+      "per_file": 1,
+      "n_questions": 36,
+      "metrics": {
+        "hit_rate@1": {
+          "value": 0.3889,
+          "ci95": [
+            0.2222,
+            0.5556
+          ]
+        },
+        "hit_rate@3": {
+          "value": 0.6944,
+          "ci95": [
+            0.5556,
+            0.8333
+          ]
+        },
+        "hit_rate@5": {
+          "value": 0.8056,
+          "ci95": [
+            0.6667,
+            0.9167
+          ]
+        },
+        "hit_rate@10": {
+          "value": 0.8889,
+          "ci95": [
+            0.7778,
+            0.9722
+          ]
+        },
+        "recall@1": {
+          "value": 0.2454,
+          "ci95": [
+            0.1389,
+            0.3611
+          ]
+        },
+        "recall@3": {
+          "value": 0.5139,
+          "ci95": [
+            0.3843,
+            0.6435
+          ]
+        },
+        "recall@5": {
+          "value": 0.6528,
+          "ci95": [
+            0.5231,
+            0.7778
+          ]
+        },
+        "recall@10": {
+          "value": 0.7917,
+          "ci95": [
+            0.6759,
+            0.8981
+          ]
+        },
+        "mrr": {
+          "value": 0.5672,
+          "ci95": [
+            0.4456,
+            0.6927
+          ]
+        },
+        "ndcg@10": {
+          "value": 0.5734,
+          "ci95": [
+            0.4697,
+            0.6719
+          ]
+        }
+      },
+      "dev": {
+        "hit_rate@1": 0.4444,
+        "hit_rate@3": 0.6111,
+        "hit_rate@5": 0.7222,
+        "hit_rate@10": 0.7778,
+        "recall@1": 0.3056,
+        "recall@3": 0.4352,
+        "recall@5": 0.5833,
+        "recall@10": 0.7222,
+        "mrr": 0.5597,
+        "ndcg@10": 0.5587,
+        "n": 18
+      },
+      "test": {
+        "hit_rate@1": 0.3333,
+        "hit_rate@3": 0.7778,
+        "hit_rate@5": 0.8889,
+        "hit_rate@10": 1.0,
+        "recall@1": 0.1852,
+        "recall@3": 0.5926,
+        "recall@5": 0.7222,
+        "recall@10": 0.8611,
+        "mrr": 0.5747,
+        "ndcg@10": 0.5881,
+        "n": 18
+      },
+      "misses_at_5": [
+        "tf03",
+        "tf08",
+        "tf09",
+        "tf12",
+        "dl04",
+        "dl06",
+        "dl13"
+      ]
+    },
+    {
+      "key": "window/hybrid+rerank",
+      "chunking": "window",
+      "strategy": "hybrid+rerank",
+      "n_chunks": 919,
+      "per_file": null,
+      "n_questions": 36,
+      "metrics": {
+        "hit_rate@1": {
+          "value": 0.3056,
+          "ci95": [
+            0.1667,
+            0.4444
+          ]
+        },
+        "hit_rate@3": {
+          "value": 0.5833,
+          "ci95": [
+            0.4167,
+            0.75
+          ]
+        },
+        "hit_rate@5": {
+          "value": 0.6667,
+          "ci95": [
+            0.5,
+            0.8056
+          ]
+        },
+        "hit_rate@10": {
+          "value": 0.75,
+          "ci95": [
+            0.6111,
+            0.8889
+          ]
+        },
+        "recall@1": {
+          "value": 0.1852,
+          "ci95": [
+            0.0926,
+            0.2917
+          ]
+        },
+        "recall@3": {
+          "value": 0.4444,
+          "ci95": [
+            0.3102,
+            0.5833
+          ]
+        },
+        "recall@5": {
+          "value": 0.5232,
+          "ci95": [
+            0.3889,
+            0.6574
+          ]
+        },
+        "recall@10": {
+          "value": 0.588,
+          "ci95": [
+            0.4583,
+            0.7176
+          ]
+        },
+        "mrr": {
+          "value": 0.4488,
+          "ci95": [
+            0.3234,
+            0.578
+          ]
+        },
+        "ndcg@10": {
+          "value": 0.427,
+          "ci95": [
+            0.3212,
+            0.5336
+          ]
+        }
+      },
+      "dev": {
+        "hit_rate@1": 0.3333,
+        "hit_rate@3": 0.5556,
+        "hit_rate@5": 0.6111,
+        "hit_rate@10": 0.6667,
+        "recall@1": 0.213,
+        "recall@3": 0.3982,
+        "recall@5": 0.4537,
+        "recall@10": 0.537,
+        "mrr": 0.4468,
+        "ndcg@10": 0.4158,
+        "n": 18
+      },
+      "test": {
+        "hit_rate@1": 0.2778,
+        "hit_rate@3": 0.6111,
+        "hit_rate@5": 0.7222,
+        "hit_rate@10": 0.8333,
+        "recall@1": 0.1574,
+        "recall@3": 0.4907,
+        "recall@5": 0.5926,
+        "recall@10": 0.6389,
+        "mrr": 0.4509,
+        "ndcg@10": 0.4383,
+        "n": 18
+      },
+      "misses_at_5": [
+        "tf02",
+        "tf03",
+        "tf04",
+        "tf05",
+        "tf08",
+        "tf09",
+        "tf11",
+        "tf12",
+        "dl06",
+        "dl09",
+        "dl13",
+        "gc05"
+      ]
+    },
+    {
+      "key": "window/hybrid+rerank+prefix",
+      "chunking": "window",
+      "strategy": "hybrid+rerank+prefix",
+      "n_chunks": 919,
+      "per_file": null,
+      "n_questions": 36,
+      "metrics": {
+        "hit_rate@1": {
+          "value": 0.2778,
+          "ci95": [
+            0.1389,
+            0.4444
+          ]
+        },
+        "hit_rate@3": {
+          "value": 0.5556,
+          "ci95": [
+            0.3889,
+            0.7222
+          ]
+        },
+        "hit_rate@5": {
+          "value": 0.6667,
+          "ci95": [
+            0.5,
+            0.8056
+          ]
+        },
+        "hit_rate@10": {
+          "value": 0.8611,
+          "ci95": [
+            0.75,
+            0.9722
+          ]
+        },
+        "recall@1": {
+          "value": 0.1713,
+          "ci95": [
+            0.0787,
+            0.2778
+          ]
+        },
+        "recall@3": {
+          "value": 0.4259,
+          "ci95": [
+            0.287,
+            0.5602
+          ]
+        },
+        "recall@5": {
+          "value": 0.5232,
+          "ci95": [
+            0.3843,
+            0.6574
+          ]
+        },
+        "recall@10": {
+          "value": 0.6921,
+          "ci95": [
+            0.5671,
+            0.8056
+          ]
+        },
+        "mrr": {
+          "value": 0.4415,
+          "ci95": [
+            0.3228,
+            0.5652
+          ]
+        },
+        "ndcg@10": {
+          "value": 0.4533,
+          "ci95": [
+            0.3586,
+            0.5488
+          ]
+        }
+      },
+      "dev": {
+        "hit_rate@1": 0.2778,
+        "hit_rate@3": 0.5556,
+        "hit_rate@5": 0.6111,
+        "hit_rate@10": 0.7778,
+        "recall@1": 0.1852,
+        "recall@3": 0.3982,
+        "recall@5": 0.4537,
+        "recall@10": 0.5787,
+        "mrr": 0.4329,
+        "ndcg@10": 0.4237,
+        "n": 18
+      },
+      "test": {
+        "hit_rate@1": 0.2778,
+        "hit_rate@3": 0.5556,
+        "hit_rate@5": 0.7222,
+        "hit_rate@10": 0.9444,
+        "recall@1": 0.1574,
+        "recall@3": 0.4537,
+        "recall@5": 0.5926,
+        "recall@10": 0.8056,
+        "mrr": 0.4502,
+        "ndcg@10": 0.4829,
+        "n": 18
+      },
+      "misses_at_5": [
+        "tf02",
+        "tf03",
+        "tf04",
+        "tf05",
+        "tf08",
+        "tf09",
+        "tf11",
+        "tf12",
+        "dl06",
+        "dl09",
+        "dl13",
+        "gc05"
+      ]
+    }
+  ]
+}
