@@ -1,0 +1,59 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: requirements.lock
+
+      - name: Cache Hugging Face models
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: hf-${{ hashFiles('codeatlas/models.py') }}
+
+      - name: Install pinned dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.lock
+          pip install -e . --no-deps
+
+      - name: Lint
+        run: |
+          ruff check .
+          ruff format --check .
+
+      - name: Tests
+        run: pytest
+
+      - name: Smoke evaluation on the fixture corpus
+        run: |
+          codeatlas evaluate \
+            --corpus tests/fixtures/corpus \
+            --golden tests/fixtures/golden.json \
+            --split tests/fixtures/split.json \
+            --manifest tests/fixtures/corpus_manifest.json \
+            --out /tmp/smoke/results \
+            --index /tmp/smoke/index \
+            --bootstrap 200
+          python - <<'PY'
+          import json
+          m = json.load(open("/tmp/smoke/results/metrics.json"))
+          assert m["n_questions"] == 6, m["n_questions"]
+          keys = {c["key"] for c in m["configurations"]}
+          assert "structural_merged/hybrid+rerank+prefix" in keys, keys
+          print(f"smoke evaluation: {len(keys)} configurations scored")
+          PY
+
+      - name: Rendered docs match results/
+        run: codeatlas render-docs --check

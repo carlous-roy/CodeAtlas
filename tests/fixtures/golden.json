@@ -1,0 +1,14 @@
+{
+  "protocol": {
+    "relevance": "file-level, as in eval/golden.json",
+    "authoring": "fixture questions for the smoke evaluation; not a benchmark"
+  },
+  "questions": [
+    {"id": "fx01", "q": "How long does it wait between retry attempts, and does that gap grow?", "relevant": ["corpus/demo/app/service.py", "corpus/demo/README.md"], "difficulty": "semantic"},
+    {"id": "fx02", "q": "Is there anything stopping one client from hammering the API?", "relevant": ["corpus/demo/app/service.py"], "difficulty": "semantic"},
+    {"id": "fx03", "q": "How does a finished report get handed to the user for download?", "relevant": ["corpus/demo/src/main/java/demo/ReportService.java"], "difficulty": "semantic"},
+    {"id": "fx04", "q": "How do I point this at a local AWS stand-in instead of real AWS?", "relevant": ["corpus/demo/README.md"], "difficulty": "semantic"},
+    {"id": "fx05", "q": "How is the opening animation sequenced?", "relevant": ["corpus/demo/web/app.jsx"], "difficulty": "semantic"},
+    {"id": "fx06", "q": "How long does a download link stay valid?", "relevant": ["corpus/demo/config.yml"], "difficulty": "lexical"}
+  ]
+}

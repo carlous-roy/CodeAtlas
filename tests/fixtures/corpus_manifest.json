@@ -1,0 +1,49 @@
+{
+  "manifest_version": 1,
+  "codeatlas_version": "0.2.0",
+  "generated": "2026-09-18",
+  "projects": {
+    "demo": {
+      "repository": null,
+      "commit": null,
+      "files": 5,
+      "lines": 125
+    }
+  },
+  "totals": {
+    "files": 5,
+    "lines": 125
+  },
+  "files": [
+    {
+      "project": "demo",
+      "path": "README.md",
+      "lines": 21,
+      "sha256": "de251ed818fd5e9324c2b5adb68d2321ac4fc293f95d2cdbeb05e98c8575bdb6"
+    },
+    {
+      "project": "demo",
+      "path": "app/service.py",
+      "lines": 47,
+      "sha256": "a18794d0af275e099ee3d02706182dbb4824fe38209cf0e94c1e837d7e44af74"
+    },
+    {
+      "project": "demo",
+      "path": "config.yml",
+      "lines": 6,
+      "sha256": "81500de13d4a62e39f31c0a37e1c6c5edcd05afe2c437cb9c7218b8aae6622b1"
+    },
+    {
+      "project": "demo",
+      "path": "src/main/java/demo/ReportService.java",
+      "lines": 31,
+      "sha256": "6704200a4fb6ba975c1dd1cacacce891ccb2544439cacda5578b353fab454c59"
+    },
+    {
+      "project": "demo",
+      "path": "web/app.jsx",
+      "lines": 20,
+      "sha256": "d3aed0b7ff975a41b033e105d30feb5c9885638de9e89efed847d8d65ed261b0"
+    }
+  ]
+}

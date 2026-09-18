@@ -1,0 +1,5 @@
+{
+  "method": "fixture split for the smoke evaluation",
+  "dev": ["fx01", "fx03", "fx05"],
+  "test": ["fx02", "fx04", "fx06"]
+}
