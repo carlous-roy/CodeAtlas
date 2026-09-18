@@ -1,6 +1,11 @@
-index/*.npy
-index/*.jsonl
 corpus/
+index/
 __pycache__/
+*.pyc
 .venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
 .DS_Store
