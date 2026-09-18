@@ -1,0 +1,733 @@
+{
+  "manifest_version": 1,
+  "codeatlas_version": "0.2.0",
+  "generated": "2026-09-18",
+  "projects": {
+    "difflens": {
+      "repository": "https://github.com/carlous-roy/DiffLens-Engine.git",
+      "commit": "3ca9978e05b95ef7e4b8d6c47886c6b1990be37f",
+      "files": 60,
+      "lines": 6640
+    },
+    "gesturecontrol": {
+      "repository": "https://github.com/carlous-roy/GestureControl-Engine.git",
+      "commit": "53c4b04bf767d00f9799fb54ce3abf0a57401237",
+      "files": 13,
+      "lines": 1316
+    },
+    "portfolio": {
+      "repository": "https://github.com/carlous-roy/portfolio.git",
+      "commit": "7c361eea5f1df4b38e7fd128865ced7b94c2e93e",
+      "files": 10,
+      "lines": 1458
+    },
+    "taskforge": {
+      "repository": "https://github.com/carlous-roy/TaskForge-Engine.git",
+      "commit": "8c02b8a514bb842d3cbd9749af065aec28eb0568",
+      "files": 33,
+      "lines": 2405
+    }
+  },
+  "totals": {
+    "files": 116,
+    "lines": 11819
+  },
+  "files": [
+    {
+      "project": "difflens",
+      "path": "CHANGELOG.md",
+      "lines": 17,
+      "sha256": "430e1bd6bdddf0f265608829fb4ebba149d800aba39ebe69cb7826c78e65ef71"
+    },
+    {
+      "project": "difflens",
+      "path": "README.md",
+      "lines": 325,
+      "sha256": "f73b9b59b0b559e58afcd1983afa4252743e2620b7bf7b0caed4dea43cf4625e"
+    },
+    {
+      "project": "difflens",
+      "path": "alembic/env.py",
+      "lines": 49,
+      "sha256": "cec222c68f9a62886529b262ee3aacbadf2342eb7292865fa2a47b1e00f18623"
+    },
+    {
+      "project": "difflens",
+      "path": "alembic/versions/001_initial.py",
+      "lines": 68,
+      "sha256": "0d6a76a6921862c5e2a7dec8e7923c31f36761ed9e640d3d6a856372aca91db8"
+    },
+    {
+      "project": "difflens",
+      "path": "alembic/versions/002_github_prs.py",
+      "lines": 47,
+      "sha256": "64c21449e4f8a60f230c6fc0ce802240bcc28be94a98c903fd4b65cf7b1af4bd"
+    },
+    {
+      "project": "difflens",
+      "path": "app/analysis/bug_risk.py",
+      "lines": 158,
+      "sha256": "5439d4393b674ac8ab14e714c2e4c2dfbe30686e18427af3eb5030bc890fd3bd"
+    },
+    {
+      "project": "difflens",
+      "path": "app/analysis/complexity.py",
+      "lines": 140,
+      "sha256": "c821a96415a308692bc58c5a612625988e50febfb9674811e6bc836e2c09caa9"
+    },
+    {
+      "project": "difflens",
+      "path": "app/analysis/diff_parser.py",
+      "lines": 245,
+      "sha256": "63d1f8825b5fcda34dd78fc2fe873f161fa8f6b1f88b42e658023baa86d9c5d4"
+    },
+    {
+      "project": "difflens",
+      "path": "app/analysis/naming.py",
+      "lines": 154,
+      "sha256": "80b48038b2258b563f4c05c0fd540ca0a21b45af4b13ad5d321ed9a0c96908e7"
+    },
+    {
+      "project": "difflens",
+      "path": "app/analysis/pipeline.py",
+      "lines": 148,
+      "sha256": "6db2b1a40cbff181fff143ac60624219ad3f3779a031e3efb2b0d68c6617cc46"
+    },
+    {
+      "project": "difflens",
+      "path": "app/api/routes.py",
+      "lines": 210,
+      "sha256": "22160c0b336079646dd14f65473c3c563fe9c1677b31e3b1de66e2ab3651a431"
+    },
+    {
+      "project": "difflens",
+      "path": "app/api/schemas.py",
+      "lines": 60,
+      "sha256": "9d33e20b4514d176eb02165c20771ab58ebb063dd27219769dee2be0cffe6167"
+    },
+    {
+      "project": "difflens",
+      "path": "app/config/__init__.py",
+      "lines": 51,
+      "sha256": "d19224b4f6a3afffdc1489d6c490fa5bde081fc0c1be462df3bcc0735176bb49"
+    },
+    {
+      "project": "difflens",
+      "path": "app/db/__init__.py",
+      "lines": 17,
+      "sha256": "a37e74fd190d763cf8147548c80a69f33e09688ec03b4ee26998d94c80537da9"
+    },
+    {
+      "project": "difflens",
+      "path": "app/db/models.py",
+      "lines": 120,
+      "sha256": "4e5a4777128750bbdbfacfb391f9ab2e562044aa1918b043be25da59fa518900"
+    },
+    {
+      "project": "difflens",
+      "path": "app/github/__init__.py",
+      "lines": 1,
+      "sha256": "c7f39659e72f1c314451df68bb999faea21ba4e123a6ce481bec2acc32a82d76"
+    },
+    {
+      "project": "difflens",
+      "path": "app/github/client.py",
+      "lines": 234,
+      "sha256": "06f86abdd5b9a00eff5102ccfc59b2099acf508bd34af92bac6fcc3d58616560"
+    },
+    {
+      "project": "difflens",
+      "path": "app/github/formatter.py",
+      "lines": 234,
+      "sha256": "9530dc3e3dd8411af43ee376a785a41e9f49e95fed649fb47403fe4b34ea536d"
+    },
+    {
+      "project": "difflens",
+      "path": "app/github/pr_analyzer.py",
+      "lines": 266,
+      "sha256": "1d1d893fb67b4acb2f1803d92cc1ac42a7097ec80f716d5630ad5a7928979020"
+    },
+    {
+      "project": "difflens",
+      "path": "app/github/routes.py",
+      "lines": 207,
+      "sha256": "40e3bb630b8e957657e4020346f9ddbc4410ac2988d11fae14005a2a41711551"
+    },
+    {
+      "project": "difflens",
+      "path": "app/github/webhook.py",
+      "lines": 102,
+      "sha256": "adc8bf3c65b299ebd3971c004a36df297a536a10175f48ced207e7b4755ccd63"
+    },
+    {
+      "project": "difflens",
+      "path": "app/main.py",
+      "lines": 39,
+      "sha256": "8644f7a0cba421b428e130e534d9c42990e7f23803b23f7c1fd3bf6c1a75a66e"
+    },
+    {
+      "project": "difflens",
+      "path": "app/ml/__init__.py",
+      "lines": 1,
+      "sha256": "c989261659717c5eaef876d7801cc2c89902a1bec673e2014efb7c1120b598eb"
+    },
+    {
+      "project": "difflens",
+      "path": "app/ml/categorization.py",
+      "lines": 152,
+      "sha256": "12b5379c8e4947ff135b2da03eb0e6d9f2851809d7c50d0aeae513b90ff2e525"
+    },
+    {
+      "project": "difflens",
+      "path": "app/ml/llm_provider.py",
+      "lines": 139,
+      "sha256": "4e41f36178671c643bb499c0e072205f057b86dfecff209b868e06915d3f8ea8"
+    },
+    {
+      "project": "difflens",
+      "path": "app/ml/risk_scoring.py",
+      "lines": 308,
+      "sha256": "4f07735684515c421643621f30ace5e52e46317ae71615957836d43cd547ff2c"
+    },
+    {
+      "project": "difflens",
+      "path": "app/ml/similarity.py",
+      "lines": 216,
+      "sha256": "cb627d98215357e6d90c18247e20bcb2e56653c7b1b65c649884f47209c0939c"
+    },
+    {
+      "project": "difflens",
+      "path": "app/ml/smart_review.py",
+      "lines": 173,
+      "sha256": "168a076dca6c52d1579e949eb75a9d726c9a25bcfb275874dc6d8a5e77358a80"
+    },
+    {
+      "project": "difflens",
+      "path": "docker-compose.yml",
+      "lines": 87,
+      "sha256": "3d13f5085decf378c196bb1bf36a7eb8b5734b359f79331ee64319e5b8e44dc3"
+    },
+    {
+      "project": "difflens",
+      "path": "frontend/postcss.config.js",
+      "lines": 6,
+      "sha256": "190c877db466995bf1482f4a16abd06e04a89ede3119341e2a86ff96e1737b27"
+    },
+    {
+      "project": "difflens",
+      "path": "frontend/src/App.jsx",
+      "lines": 84,
+      "sha256": "7db154fa43e2df202fae693ea9c6ce5c340f8bd186575f4ae1f79c13e62f8cea"
+    },
+    {
+      "project": "difflens",
+      "path": "frontend/src/api.js",
+      "lines": 66,
+      "sha256": "3248742bdc604af1153f3e5b707a3f8f0c5af3ae0133502808d892290d39b392"
+    },
+    {
+      "project": "difflens",
+      "path": "frontend/src/components/Badges.jsx",
+      "lines": 41,
+      "sha256": "184d592a0db23def3aa70124ec943a5a6aed52f451b95cb54ede54ed5cb98480"
+    },
+    {
+      "project": "difflens",
+      "path": "frontend/src/components/Charts.jsx",
+      "lines": 129,
+      "sha256": "b12abc9198490133e6768760f7ec646230144fe4786cc1eebb544d189d0d3073"
+    },
+    {
+      "project": "difflens",
+      "path": "frontend/src/components/FindingsList.jsx",
+      "lines": 79,
+      "sha256": "e2f01779094767059684bfd0b46f5f27153d7ee0f290f344164f8cd7d3373b26"
+    },
+    {
+      "project": "difflens",
+      "path": "frontend/src/components/RiskGauge.jsx",
+      "lines": 67,
+      "sha256": "b82b21dd2f78df59caf35da801c111a80283f82e4bdc486ff2bbe71e7405bfb2"
+    },
+    {
+      "project": "difflens",
+      "path": "frontend/src/main.jsx",
+      "lines": 10,
+      "sha256": "402859ac133ba51eb4d9d4a449c732442252c0e83b2027aa9610cfe9374fc078"
+    },
+    {
+      "project": "difflens",
+      "path": "frontend/src/pages/AnalyzePage.jsx",
+      "lines": 169,
+      "sha256": "5148b05d5d390050e058e30b7b9f94f49ab41257c17a877d4267b4164033d54c"
+    },
+    {
+      "project": "difflens",
+      "path": "frontend/src/pages/GitHubPage.jsx",
+      "lines": 223,
+      "sha256": "4243e672c90d882533190864f0687b1aa5a37010dbf33decbcbdefdf291eb9c2"
+    },
+    {
+      "project": "difflens",
+      "path": "frontend/src/pages/HistoryPage.jsx",
+      "lines": 102,
+      "sha256": "12c42cbbc7ca5a5aab5de8ddba4d229cafaa73535100e6618dd5df04d1e15877"
+    },
+    {
+      "project": "difflens",
+      "path": "frontend/src/pages/RunDetailPage.jsx",
+      "lines": 136,
+      "sha256": "2bcd33f4286d4809f1c2ed8a3f8c15fecd458de8e536a8c3ca97fcabc6fafc24"
+    },
+    {
+      "project": "difflens",
+      "path": "frontend/src/pages/StatusPage.jsx",
+      "lines": 88,
+      "sha256": "55c478f8c7a100345a4b54fcd9c56559034d9bcc9182714f77fca8ee78fde1d8"
+    },
+    {
+      "project": "difflens",
+      "path": "frontend/tailwind.config.js",
+      "lines": 59,
+      "sha256": "156bb59713d1a12a03ffe0e68a462f2a53840141df5cfb566d10eaa9fcbc92b2"
+    },
+    {
+      "project": "difflens",
+      "path": "frontend/vite.config.js",
+      "lines": 16,
+      "sha256": "c59aa6469927ac47bb6e40a5912a40894e58aa8fe4327aa83b55a04b99486e32"
+    },
+    {
+      "project": "difflens",
+      "path": "requirements.txt",
+      "lines": 30,
+      "sha256": "975d76126a481f06a311f6ebe58a7549cb52573f3e4862a055b55033c6eacffa"
+    },
+    {
+      "project": "difflens",
+      "path": "tests/conftest.py",
+      "lines": 118,
+      "sha256": "85d330df09bec0c2b716ec46bee0e144824c80b036ad021c16f0d2869f0de878"
+    },
+    {
+      "project": "difflens",
+      "path": "tests/test_api.py",
+      "lines": 73,
+      "sha256": "937712108fe57f77535b8952be5fec365e873846fe9311e48ae003182bcdd145"
+    },
+    {
+      "project": "difflens",
+      "path": "tests/test_bug_risk.py",
+      "lines": 72,
+      "sha256": "82014e66f8cdba6cb01535612b5ebe683d83f3f0663252dcf3f0ed7a9d9c782b"
+    },
+    {
+      "project": "difflens",
+      "path": "tests/test_categorization.py",
+      "lines": 88,
+      "sha256": "cf4be244cd857177683a8b61a700179899ef06fb8b6210bb82a0e1522fcc046c"
+    },
+    {
+      "project": "difflens",
+      "path": "tests/test_complexity.py",
+      "lines": 47,
+      "sha256": "80e8755f63aa25c2c59b23dba8b07777804020832c7892d69e27caf7e3172d59"
+    },
+    {
+      "project": "difflens",
+      "path": "tests/test_diff_parser.py",
+      "lines": 129,
+      "sha256": "3b909d5139ac5f6669c12ebd92b72f508400d50b75cb190d9dbbccf53cb5cf2b"
+    },
+    {
+      "project": "difflens",
+      "path": "tests/test_formatter.py",
+      "lines": 135,
+      "sha256": "ffe35a76a04d0abc8d4a88d4a699cbb8b7bab778ac71f35799432203975497f7"
+    },
+    {
+      "project": "difflens",
+      "path": "tests/test_github_routes.py",
+      "lines": 123,
+      "sha256": "6eadd38be4c39fe7d0fd9c52c5d61b705edfbbf0f14a4a08b603e2d948d13387"
+    },
+    {
+      "project": "difflens",
+      "path": "tests/test_llm_provider.py",
+      "lines": 31,
+      "sha256": "f3730398b6a8d2d75d47c9d7168bf234efa925e8cb5156dd9e228b23b3651658"
+    },
+    {
+      "project": "difflens",
+      "path": "tests/test_naming.py",
+      "lines": 65,
+      "sha256": "ea5eaf78de68ea3e4db092d750beb05a12a28ffd279c8077c21791cb9f9a838d"
+    },
+    {
+      "project": "difflens",
+      "path": "tests/test_pipeline.py",
+      "lines": 84,
+      "sha256": "0b552e4b722164fbb0453c397f1bfe79f99c10bd0f9945b4dc5731173055fb7e"
+    },
+    {
+      "project": "difflens",
+      "path": "tests/test_risk_scoring.py",
+      "lines": 123,
+      "sha256": "815022d3ec58ed2d4579f527793de57b72f3132fd4f6cfbac8f8003ae9a01ab4"
+    },
+    {
+      "project": "difflens",
+      "path": "tests/test_similarity.py",
+      "lines": 70,
+      "sha256": "a717b29ce5ec3d689b95c8f0ff0631e1aec5a7b05ade6766fc373a60a934c487"
+    },
+    {
+      "project": "difflens",
+      "path": "tests/test_smart_review.py",
+      "lines": 82,
+      "sha256": "0f9befa9cc3cc71d26ca7077f0fc520aeec368712b91c33e2309e6334e3bef30"
+    },
+    {
+      "project": "difflens",
+      "path": "tests/test_webhook.py",
+      "lines": 127,
+      "sha256": "23c417fbdfb7819b149e2251f0b12c3672c39cef45f5836431552fa440f2aa3b"
+    },
+    {
+      "project": "gesturecontrol",
+      "path": "README.md",
+      "lines": 218,
+      "sha256": "a10efb8f6a83eef9315ad2522dac343f91ecc76b403773190d56828e39a4f2b5"
+    },
+    {
+      "project": "gesturecontrol",
+      "path": "docs/ALGORITHM.md",
+      "lines": 157,
+      "sha256": "5eaac75075b9cac7a7d38de591fc327eab4ab89f460ff27406a4188fb93a5b8c"
+    },
+    {
+      "project": "gesturecontrol",
+      "path": "docs/HARDWARE.md",
+      "lines": 77,
+      "sha256": "3998f12adfc511101ee1aeff150007b0c07cb4cce956737ac8150e1eff38011b"
+    },
+    {
+      "project": "gesturecontrol",
+      "path": "docs/TECHNICAL_REPORT.md",
+      "lines": 255,
+      "sha256": "af4a5b18b145bbcf1fe08e1cfea02c1d8faa9c4ff956bf5639926ec287f1c328"
+    },
+    {
+      "project": "gesturecontrol",
+      "path": "main.py",
+      "lines": 143,
+      "sha256": "7ef4347dc31bbf0e20c7bb01671e19fe8739ee387fd90f11c9a254c0baebbb5d"
+    },
+    {
+      "project": "gesturecontrol",
+      "path": "requirements.txt",
+      "lines": 10,
+      "sha256": "937e9b4e9f1ad41aa587ffc1bc503f57fdb45f7f31622c66e7a09f12a94463d9"
+    },
+    {
+      "project": "gesturecontrol",
+      "path": "setup.py",
+      "lines": 12,
+      "sha256": "5af34f66e120ab75edada438a963816681fb20b0e8d6549756fb42f8523a1777"
+    },
+    {
+      "project": "gesturecontrol",
+      "path": "simulation/demo.py",
+      "lines": 44,
+      "sha256": "6fa6895ef978cb6cee68d6a4581b196f49471634fb5b46dd9546ea1f73554111"
+    },
+    {
+      "project": "gesturecontrol",
+      "path": "src/__init__.py",
+      "lines": 2,
+      "sha256": "9c84bdc45aa0b0c7bbcb348acc1f8fcd1f450ca727880f8db76b4011a2f64725"
+    },
+    {
+      "project": "gesturecontrol",
+      "path": "src/controller.py",
+      "lines": 74,
+      "sha256": "80822dcce1d59ff7dcbbe21d7daebe38699cc9006fa6bb7f036edbbb6685d64c"
+    },
+    {
+      "project": "gesturecontrol",
+      "path": "src/hand_detector.py",
+      "lines": 196,
+      "sha256": "c9d18ca32f4f7136824c3e50e25ca48f5d710f999b43d09ba15e7a8bcccff3e1"
+    },
+    {
+      "project": "gesturecontrol",
+      "path": "src/ui_overlay.py",
+      "lines": 67,
+      "sha256": "08432a3b33a82f865f84296d812c6ffae03671c96fb063f1363e4819839c971f"
+    },
+    {
+      "project": "gesturecontrol",
+      "path": "tests/test_controller.py",
+      "lines": 61,
+      "sha256": "982bb6afbda8050a05221159013950185e87c4f078bd02ff89e4edc6b7206d7b"
+    },
+    {
+      "project": "portfolio",
+      "path": "CHANGELOG.md",
+      "lines": 21,
+      "sha256": "ec9a66de4455765378a5b86342456965e755e129c61ff41062788d2f4f4b05c2"
+    },
+    {
+      "project": "portfolio",
+      "path": "README.md",
+      "lines": 145,
+      "sha256": "0ffb74c78ee0e034f06f25a52ca9974b5979f2ae9f20bf7790bc9130d318918d"
+    },
+    {
+      "project": "portfolio",
+      "path": "api/chat.js",
+      "lines": 90,
+      "sha256": "2ab56c329a8297f382d6c3538f59df0d7e986b9118ef96a6578ed54b9e68da60"
+    },
+    {
+      "project": "portfolio",
+      "path": "postcss.config.js",
+      "lines": 6,
+      "sha256": "190c877db466995bf1482f4a16abd06e04a89ede3119341e2a86ff96e1737b27"
+    },
+    {
+      "project": "portfolio",
+      "path": "src/App.jsx",
+      "lines": 681,
+      "sha256": "c77077581742ff8504495cae62c55ae8e2134f6cde83e70b7f5648e3a9ab426c"
+    },
+    {
+      "project": "portfolio",
+      "path": "src/components/AIChatbot.jsx",
+      "lines": 236,
+      "sha256": "cbcdc82a07c9629197ab71dc856715d737fab5c6e6bd6630eced3be0003ba982"
+    },
+    {
+      "project": "portfolio",
+      "path": "src/components/IntroAnimation.jsx",
+      "lines": 239,
+      "sha256": "150b4111ed3008df490b11c5306c40d43abc4f6d5d1250afa171fb1579d841d0"
+    },
+    {
+      "project": "portfolio",
+      "path": "src/main.jsx",
+      "lines": 10,
+      "sha256": "fe0a880a0f77c2b0355f15464fc4cc85467fb788f3df22bef9cfe5553dc67261"
+    },
+    {
+      "project": "portfolio",
+      "path": "tailwind.config.js",
+      "lines": 22,
+      "sha256": "8bd56d47f45069625dd0fc76b2c9bacb7a0858b75b585f6c8af9a09bf61f17fe"
+    },
+    {
+      "project": "portfolio",
+      "path": "vite.config.js",
+      "lines": 8,
+      "sha256": "35e1b8eb3d364842c6d801907dde0834d573946c43e701fda6b106a74cce1583"
+    },
+    {
+      "project": "taskforge",
+      "path": "README.md",
+      "lines": 281,
+      "sha256": "ee103bc83a7d04fba5819da0cc65072239acab2cbc68542c1ba1800603516728"
+    },
+    {
+      "project": "taskforge",
+      "path": "docker-compose.yml",
+      "lines": 39,
+      "sha256": "da686e9fb792741a91f4e6a2d45eeef41783bb2b77cce3819e0ce6e1aaff9ffe"
+    },
+    {
+      "project": "taskforge",
+      "path": "taskforge-api/src/main/java/com/taskforge/api/TaskForgeApiApplication.java",
+      "lines": 13,
+      "sha256": "24893d7e3c37f3cc6a18221ad2b3e799be5a8b00163cb72886965fb18a15d06e"
+    },
+    {
+      "project": "taskforge",
+      "path": "taskforge-api/src/main/java/com/taskforge/api/config/RateLimitFilter.java",
+      "lines": 107,
+      "sha256": "9a9e5011b63274c1e4d3100c8cc8a61e4ba7139d9d69422bc4d8dd23258a6813"
+    },
+    {
+      "project": "taskforge",
+      "path": "taskforge-api/src/main/java/com/taskforge/api/controller/GlobalExceptionHandler.java",
+      "lines": 52,
+      "sha256": "d514c8067d5eaa2c825a5ff463ca2c61ec16ef73ccf080ed2e07129f2007860b"
+    },
+    {
+      "project": "taskforge",
+      "path": "taskforge-api/src/main/java/com/taskforge/api/controller/ReportController.java",
+      "lines": 73,
+      "sha256": "1d4b62c9e6567e4febe08ab292bbe6e459cba715249dcc847fef9b14b251dc35"
+    },
+    {
+      "project": "taskforge",
+      "path": "taskforge-api/src/main/java/com/taskforge/api/service/ReportService.java",
+      "lines": 75,
+      "sha256": "5fd0eb7b33916096f1e6cde1e59a3ab6b178960029de97bd36f9a5827fff156e"
+    },
+    {
+      "project": "taskforge",
+      "path": "taskforge-api/src/main/resources/application.yml",
+      "lines": 37,
+      "sha256": "0a0dbda4baa9b8ccdd1950120f4aae7a55a4bd3218c830efef01d91d8f4bb593"
+    },
+    {
+      "project": "taskforge",
+      "path": "taskforge-common/src/main/java/com/taskforge/common/config/AwsConfig.java",
+      "lines": 82,
+      "sha256": "c77a8b54a6e0a8793ac6173a5fc2aafd02e5c6f5a9e7929ca8fde53c89b34c67"
+    },
+    {
+      "project": "taskforge",
+      "path": "taskforge-common/src/main/java/com/taskforge/common/config/JacksonConfig.java",
+      "lines": 21,
+      "sha256": "613e5c85a16326f570f5f391827412807274473d0d9948b021447e3f37b8bc3f"
+    },
+    {
+      "project": "taskforge",
+      "path": "taskforge-common/src/main/java/com/taskforge/common/dto/CreateReportRequest.java",
+      "lines": 23,
+      "sha256": "0ce5fa86ce1b86984943c235ae59fb20c84ed22fdccf459cfe49dc09bccfc6d6"
+    },
+    {
+      "project": "taskforge",
+      "path": "taskforge-common/src/main/java/com/taskforge/common/dto/ErrorResponse.java",
+      "lines": 25,
+      "sha256": "579cd401d398d2ea6a3555b98c48b6d5dff54cdc1d572a60ad0c88cf8c7e058c"
+    },
+    {
+      "project": "taskforge",
+      "path": "taskforge-common/src/main/java/com/taskforge/common/dto/ReportResponse.java",
+      "lines": 57,
+      "sha256": "ab4eee22e1a6ffb3754a65672df248cc785e83b62614b91cbce52ec7e0f7bf7e"
+    },
+    {
+      "project": "taskforge",
+      "path": "taskforge-common/src/main/java/com/taskforge/common/enums/ReportStatus.java",
+      "lines": 10,
+      "sha256": "0c307e7213e8453f541730dc456671f958554edef8456827e22dfaa2020d1e29"
+    },
+    {
+      "project": "taskforge",
+      "path": "taskforge-common/src/main/java/com/taskforge/common/enums/ReportType.java",
+      "lines": 7,
+      "sha256": "926d6a4bdadfb6ee8fa784f6ae79f48d67b5f3f26d376a310908365b9ba8b623"
+    },
+    {
+      "project": "taskforge",
+      "path": "taskforge-common/src/main/java/com/taskforge/common/exception/DuplicateReportException.java",
+      "lines": 10,
+      "sha256": "52ceb6e4cf7b1dcd6f2cc49916514f76ac0627afa19d9e695999a96434b11608"
+    },
+    {
+      "project": "taskforge",
+      "path": "taskforge-common/src/main/java/com/taskforge/common/exception/ReportGenerationException.java",
+      "lines": 14,
+      "sha256": "399fb99bd46036fdbd1adac408e7a91f9ead4d031904f1c3c4506053d14ce8f4"
+    },
+    {
+      "project": "taskforge",
+      "path": "taskforge-common/src/main/java/com/taskforge/common/exception/ReportNotFoundException.java",
+      "lines": 7,
+      "sha256": "75f53af8965f311876280ea5b50190f6fb7fcba9a365e221e5c681f14d5c725e"
+    },
+    {
+      "project": "taskforge",
+      "path": "taskforge-common/src/main/java/com/taskforge/common/model/ReportJob.java",
+      "lines": 137,
+      "sha256": "8d2e0d15ec9924d6baa44742f5c1e016eb1f0a0e8380e97404037531f6957126"
+    },
+    {
+      "project": "taskforge",
+      "path": "taskforge-common/src/main/java/com/taskforge/common/repository/ReportJobRepository.java",
+      "lines": 196,
+      "sha256": "44ab23a3ef22f8480727c88ee61b9a6a94b1a4e5a4d034b95d96bf71a4d8fd26"
+    },
+    {
+      "project": "taskforge",
+      "path": "taskforge-common/src/main/java/com/taskforge/common/service/QueueService.java",
+      "lines": 118,
+      "sha256": "2459d4ba71501e9585851b07f450e256be88d397bd02a1c57e2b16b93542f1fc"
+    },
+    {
+      "project": "taskforge",
+      "path": "taskforge-common/src/main/java/com/taskforge/common/service/StorageService.java",
+      "lines": 80,
+      "sha256": "89403682f300715763e4a4728f640066aa52f4bcf1115b5e8d14381ec60265a6"
+    },
+    {
+      "project": "taskforge",
+      "path": "taskforge-common/src/test/java/com/taskforge/common/ReportJobTest.java",
+      "lines": 113,
+      "sha256": "94c3852f543180b5544974bdbb4d25d7a82c62c4e1febaaea3903b0f59fc3df8"
+    },
+    {
+      "project": "taskforge",
+      "path": "taskforge-worker/src/main/java/com/taskforge/worker/TaskForgeWorkerApplication.java",
+      "lines": 15,
+      "sha256": "e756d80802ba5d552922b32f4b69f2247242647a88a89143030bc81b1043fcba"
+    },
+    {
+      "project": "taskforge",
+      "path": "taskforge-worker/src/main/java/com/taskforge/worker/config/HealthEndpoint.java",
+      "lines": 30,
+      "sha256": "095187e565ae0f78328254ef4cb38bd3124b5043d5d88565d0f496f217116edc"
+    },
+    {
+      "project": "taskforge",
+      "path": "taskforge-worker/src/main/java/com/taskforge/worker/data/DataSeeder.java",
+      "lines": 175,
+      "sha256": "f01535ab1e018fdfa93a8e04434ad4f2bd39d55aa90e900dba8d1ecbcb654c86"
+    },
+    {
+      "project": "taskforge",
+      "path": "taskforge-worker/src/main/java/com/taskforge/worker/report/InventorySnapshotGenerator.java",
+      "lines": 107,
+      "sha256": "f36d66555d8a9e1181e02759479cbeed38d0b9b298da6a28f9438fab9114ed13"
+    },
+    {
+      "project": "taskforge",
+      "path": "taskforge-worker/src/main/java/com/taskforge/worker/report/ReportGenerator.java",
+      "lines": 12,
+      "sha256": "b08d312baebb54eafb1adc4b386a38805ddb83dd0117233a113f8e705e4f9398"
+    },
+    {
+      "project": "taskforge",
+      "path": "taskforge-worker/src/main/java/com/taskforge/worker/report/SalesSummaryGenerator.java",
+      "lines": 108,
+      "sha256": "f12da34921a6192a5d005cbc2f404503977de6ff27c17dedfa1f3e5d21fb513e"
+    },
+    {
+      "project": "taskforge",
+      "path": "taskforge-worker/src/main/java/com/taskforge/worker/report/UserActivityGenerator.java",
+      "lines": 101,
+      "sha256": "4d98a0666b65bc74bef9925129359eb5a2eabe33c3d8405f18d5810a28cf6f45"
+    },
+    {
+      "project": "taskforge",
+      "path": "taskforge-worker/src/main/java/com/taskforge/worker/service/JobProcessor.java",
+      "lines": 145,
+      "sha256": "4b7ca1a64c9feb14f67a32f42631cd0841e00127a6d6bd3d7fbb68a7b22852f6"
+    },
+    {
+      "project": "taskforge",
+      "path": "taskforge-worker/src/main/java/com/taskforge/worker/service/MessagePoller.java",
+      "lines": 85,
+      "sha256": "377267afc5ae3742c592160259c5eecaa55cb9ee84fc5412786f5fbe06b5dccd"
+    },
+    {
+      "project": "taskforge",
+      "path": "taskforge-worker/src/main/resources/application.yml",
+      "lines": 50,
+      "sha256": "867c805c293d0a8d7104119726cdc9982470d1ce6dfef26543683c0d1fce5a65"
+    }
+  ]
+}
