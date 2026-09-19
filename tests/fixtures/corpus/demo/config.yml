@@ -1,0 +1,6 @@
+queue:
+  name: report-jobs
+  visibility_timeout_seconds: 60
+storage:
+  bucket: demo-reports
+  presign_ttl_seconds: 900
