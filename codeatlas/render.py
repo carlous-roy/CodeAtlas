@@ -59,7 +59,7 @@ class Results:
         self.cap = self._load("cap_ablation.json")
         self.failures = self._load("failure_analysis.json")
         self.metadata = self._load("metadata.json")
-        self.manifest = self._load("corpus_manifest.json")
+        self.manifest = self._load_manifest()
         self.by_key = {c["key"]: c for c in self.metrics["configurations"]}
         self.n = self.metrics["n_questions"]
         per_file = self.metadata["settings"].get("per_file")
@@ -69,6 +69,19 @@ class Results:
     def _load(self, name: str) -> dict:
         with (self.dir / name).open(encoding="utf-8") as f:
             return json.load(f)
+
+    def _load_manifest(self) -> dict:
+        """The manifest next to the results, else the one the evaluation
+        recorded, else an empty one (a run with --allow-unverified-corpus)."""
+        candidates = [self.dir / "corpus_manifest.json"]
+        recorded = (self.metadata.get("corpus") or {}).get("manifest")
+        if recorded:
+            candidates.append(Path(recorded))
+        for p in candidates:
+            if p.exists():
+                with p.open(encoding="utf-8") as f:
+                    return json.load(f)
+        return {"projects": {}, "totals": {"files": 0, "lines": 0}, "files": []}
 
     def get(self, key: str) -> dict | None:
         return self.by_key.get(key)

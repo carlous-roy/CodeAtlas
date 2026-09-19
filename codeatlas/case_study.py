@@ -458,11 +458,12 @@ def _generated_line(r: Results) -> str:
     m = r.metadata
     commit = m.get("codeatlas_commit") or ""
     date = m["generated_at"][:10]
-    corpus = ", ".join(f"{name} {sha[:7]}" for name, sha in m["corpus"].get("projects", {}).items())
+    projects = (m.get("corpus") or {}).get("projects") or {}
+    corpus = ", ".join(f"{name} {sha[:7] if sha else 'unpinned'}" for name, sha in projects.items())
     return (
         f"Results generated {esc(date)} by codeatlas {esc(m['codeatlas_version'])}"
         + (f" at commit <code>{esc(commit[:12])}</code>" if commit else "")
-        + f"; corpus commits {esc(corpus)}."
+        + (f"; corpus commits {esc(corpus)}." if corpus else "; corpus not pinned.")
     )
 
 
