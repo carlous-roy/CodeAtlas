@@ -1,19 +1,40 @@
-# Running CodeAtlas on your own codebase
+# Running CodeAtlas
 
 ## Install
 
 ```bash
 python -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
+pip install -r requirements.lock      # exact versions, CPU-only torch
+pip install -e .
 ```
 
-First run downloads two models from Hugging Face, about 120MB total:
-`all-MiniLM-L6-v2` for embeddings and `ms-marco-MiniLM-L-6-v2` for the reranker
-ablation. Both run on CPU.
+Python 3.11 or newer. The two models (`all-MiniLM-L6-v2` for embeddings,
+`ms-marco-MiniLM-L-6-v2` for the reranker) download from the Hugging Face hub
+at pinned revisions on first use, about 180 MB together, and run on CPU.
 
-## Point it at a codebase
+## Reproduce the published numbers
 
-Put the code under `corpus/`, one directory per project:
+```bash
+codeatlas corpus fetch     # clones the four projects at the pinned commits into corpus/
+codeatlas corpus verify    # optional: compares corpus/ with results/corpus_manifest.json
+codeatlas evaluate         # writes results/; about 6 minutes on two CPU cores
+codeatlas render-docs      # rerenders the README tables and docs/case-study.html
+```
+
+`codeatlas evaluate` verifies the corpus against the manifest before it starts
+and stops with a list of differences if anything is missing, extra or changed.
+Results are written after each chunking, so an interrupted run leaves the
+configurations it finished. `--no-rerank` skips the cross-encoder strategies;
+`--chunkings structural_merged` limits the run to one chunking; `--per-file N`
+fixes the cap instead of choosing it on the dev half.
+
+Two runs on the same machine produce identical `results/` files apart from
+`generated_at` and `duration_seconds` in `metadata.json`.
+
+## Point it at your own codebase
+
+Put the code under `corpus/`, one directory per project, and write a manifest
+for it so that later runs can prove they indexed the same files:
 
 ```
 corpus/
@@ -21,24 +42,25 @@ corpus/
   my-frontend/
 ```
 
-`corpus/` is gitignored, so nothing you index gets committed by accident.
-
-Then:
-
 ```bash
-python build_index.py
+codeatlas corpus manifest --corpus corpus --out results/corpus_manifest.json
 ```
 
-This writes three chunkings to `index/`: `structural`, `structural_merged` and
-`window`. Extending it to another language means adding the Tree-sitter grammar to
-`LANGS` and its declaration node types to `DECL_NODES` in `build_index.py`.
-Anything without a grammar falls back to windows automatically, so unsupported
-files degrade rather than break.
+If a project directory is a git checkout, its remote URL and commit are
+recorded; otherwise those fields are `null`. `corpus/` and `index/` are
+gitignored.
+
+Chunk paths are logical: `corpus/<project>/<path inside the project>`,
+regardless of where the directory lives on disk. Tree-sitter parses `.py` and
+`.java`; Markdown splits on headings; every other indexed extension (`.js`,
+`.jsx`, `.ts`, `.tsx`, `.yml`, `.yaml`, `.txt`, `.sql`) is chunked by windows.
+Adding a language means adding its grammar and declaration node types to
+`LANGUAGES` in `codeatlas/chunking.py`.
 
 ## Write a golden set
 
-`eval/golden.json` is the part that takes real time, and it is the part worth
-doing. Each entry is a question plus the files that answer it:
+`eval/golden.json` is the part that takes real time and the part worth doing.
+Each entry is a question plus the files that answer it:
 
 ```json
 {"id": "svc01",
@@ -47,42 +69,58 @@ doing. Each entry is a question plus the files that answer it:
  "difficulty": "semantic"}
 ```
 
-Two rules that decide whether the evaluation measures anything:
+Two rules decide whether the evaluation measures anything:
 
-1. **Phrase questions the way someone new to the repo would ask.** If you write
-   "find the JobProcessor retry limit" you are testing string matching against a
-   filename, and BM25 will look spectacular for no reason.
-2. **Label every file that genuinely answers it**, not just the one you thought of
-   first. Under-labelling shows up as false failures, and you will waste an
-   afternoon debugging a retriever that was right.
+1. Phrase questions the way someone new to the repository would ask. "Find the
+   JobProcessor retry limit" tests string matching against a filename.
+2. Label every file that genuinely answers the question, not just the first one
+   you thought of. Under-labelling shows up as false failures.
 
-Mark each question `lexical`, `semantic` or `cross_file` so the breakdown by
-difficulty means something.
-
-## Evaluate
+`eval/LABELLING.md` has the full protocol, including the difficulty definitions
+and the two-labeller procedure. Then split the set and evaluate:
 
 ```bash
-python evaluate.py           # all chunkings x all strategies
-python analyze_failures.py   # failure diagnostics and the per-file cap ablation
+codeatlas make-split --golden eval/golden.json --out eval/split.json
+codeatlas evaluate --golden eval/golden.json --split eval/split.json
 ```
 
-Results land in `results/`. `retrievals.json` holds the full top-10 for every
-question with hit/miss flags, which is what you read when a number moves and you
-want to know why.
+## Use the retriever
 
-## Using the retriever
+```bash
+codeatlas build-index                                   # corpus/ -> index/chunks_*.jsonl
+codeatlas search "how are retries backed off?" -k 5     # merged chunking, hybrid + per-file cap
+codeatlas search "rate limiting" --strategy dense --chunking window
+```
+
+From Python:
 
 ```python
-from sentence_transformers import SentenceTransformer
-from retrieve import Index, load_chunks
+from pathlib import Path
 
-embedder = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
-idx = Index(load_chunks("structural_merged"), embedder=embedder)
+from codeatlas.chunking import read_chunks
+from codeatlas.models import load_embedder
+from codeatlas.retrieval import Index
 
-for i in idx.hybrid_rank("how are retries backed off?", k=5, embedder=embedder):
-    c = idx.chunks[i]
-    print(f"{c['path']}:{c['start_line']}  {c['name']}")
+chunks = read_chunks(Path("index/chunks_structural_merged.jsonl"))
+index = Index.build(chunks, load_embedder(), cache_dir=Path("index"), label="structural_merged")
+for i in index.search("how are retries backed off?", "hybrid+cap", k=5):
+    c = index.chunks[i]
+    print(f"{c.path}:{c.start_line}-{c.end_line}  {c.name}")
 ```
 
-Add the per-file cap from `analyze_failures.py` if you are feeding a context
-window rather than showing a list to a human. It was worth +0.11 R@3 here.
+`Index.search` accepts `bm25`, `dense`, `hybrid`, `hybrid+cap`,
+`hybrid+rerank` and `hybrid+rerank+prefix` (the last two need
+`reranker=load_reranker()` when building the index). Embeddings are cached
+under `cache_dir` keyed on a hash of the chunk payloads and the model revision.
+
+## Tests and lint
+
+```bash
+pip install -e ".[dev]"
+ruff check . && ruff format --check .
+pytest
+```
+
+The tests use a five-file fixture corpus under `tests/fixtures/` and need no
+model download. CI additionally runs `codeatlas evaluate` on that fixture with
+both models and checks that the rendered docs match `results/`.
