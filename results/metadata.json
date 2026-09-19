@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-09-18T23:23:00+00:00",
+  "generated_at": "2026-09-19T12:40:05+00:00",
   "codeatlas_version": "0.2.0",
-  "codeatlas_commit": "632c9b87c86f265cbb66ba40232f90768b72eca6",
+  "codeatlas_commit": "02dbd2af59d169e8a1921af41c9787a70282984d",
   "python": "3.11.15",
-  "platform": "Linux-6.18.44-fc-v33-x86_64-with-glibc2.39",
+  "platform": "Linux-6.18.44-fc-v37-x86_64-with-glibc2.39",
   "packages": {
     "numpy": "2.4.6",
     "torch": "2.14.0+cpu",
@@ -96,5 +96,5 @@
       "n_over_budget": 0
     }
   },
-  "duration_seconds": 324.0
+  "duration_seconds": 349.9
 }

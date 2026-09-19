@@ -651,16 +651,20 @@ def _dump(path: Path, data: object) -> None:
     path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
+VOLATILE_METADATA = ("generated_at", "duration_seconds", "codeatlas_commit")
+
+
 def results_digest(out_dir: Path, ignore_volatile: bool = True) -> dict[str, str]:
-    """sha256 of every results file; ``metadata.json`` is hashed without its
-    timestamp and duration so two runs can be compared."""
+    """sha256 of every results file. ``metadata.json`` is hashed without the
+    fields that change between two runs of the same code on the same machine
+    (timestamp, run time, commit the run was made at), so two runs compare."""
     digest: dict[str, str] = {}
     for p in sorted(out_dir.glob("*.json")):
         data = p.read_bytes()
         if ignore_volatile and p.name == "metadata.json":
             meta = json.loads(data)
-            meta.pop("generated_at", None)
-            meta.pop("duration_seconds", None)
+            for key in VOLATILE_METADATA:
+                meta.pop(key, None)
             data = json.dumps(meta, sort_keys=True).encode("utf-8")
         digest[p.name] = hashlib.sha256(data).hexdigest()
     return digest

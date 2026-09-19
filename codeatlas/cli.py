@@ -156,6 +156,14 @@ def cmd_make_split(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_digest(args: argparse.Namespace) -> int:
+    from codeatlas.evaluation import results_digest
+
+    for name, sha in results_digest(args.results, ignore_volatile=not args.raw).items():
+        print(f"{sha}  {name}")
+    return 0
+
+
 def cmd_render_docs(args: argparse.Namespace) -> int:
     from codeatlas.render import render_all
 
@@ -233,6 +241,11 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--out", type=Path, default=DEFAULT_SPLIT)
     p.add_argument("--seed", type=int, default=SEED)
     p.set_defaults(func=cmd_make_split)
+
+    p = sub.add_parser("digest", help="print a sha256 per results file, ignoring the fields that change between runs")
+    p.add_argument("--results", type=Path, default=DEFAULT_RESULTS)
+    p.add_argument("--raw", action="store_true", help="hash metadata.json as is")
+    p.set_defaults(func=cmd_digest)
 
     p = sub.add_parser("render-docs", help="render README tables and docs/case-study.html from results/")
     p.add_argument("--results", type=Path, default=DEFAULT_RESULTS)

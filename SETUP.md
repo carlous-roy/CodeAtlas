@@ -29,7 +29,9 @@ configurations it finished. `--no-rerank` skips the cross-encoder strategies;
 fixes the cap instead of choosing it on the dev half.
 
 Two runs on the same machine produce identical `results/` files apart from
-`generated_at` and `duration_seconds` in `metadata.json`.
+`generated_at`, `duration_seconds` and `codeatlas_commit` in `metadata.json`;
+`codeatlas digest` prints a sha256 per file with those fields left out, so two
+runs can be compared with `diff`.
 
 ## Point it at your own codebase
 

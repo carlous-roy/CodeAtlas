@@ -331,13 +331,13 @@ at pinned revisions on first use and run on CPU.
 Provenance of the committed results:
 
 <!-- codeatlas:table:metadata -->
-- Generated: 2026-09-18T23:23:00+00:00 with codeatlas 0.2.0 at commit `632c9b87c86f`
+- Generated: 2026-09-19T12:40:05+00:00 with codeatlas 0.2.0 at commit `02dbd2af59d1`
 - Python 3.11.15; torch 2.14.0+cpu, sentence-transformers 6.0.1, transformers 5.17.0, tree-sitter 0.25.2, rank-bm25 0.2.2, snowballstemmer 3.1.1
 - Embedder: `sentence-transformers/all-MiniLM-L6-v2` at revision `1110a243fdf4` (256-token window)
 - Reranker: `cross-encoder/ms-marco-MiniLM-L-6-v2` at revision `233902d25c44` (512-token window)
 - Corpus manifest sha256 `01ee3322119c`, verified: True
 - Settings: top-10 scored, RRF k=60 over depth 60, cap depth 60, rerank depth 30, per-file cap 1, payload budget 254 tokens, bootstrap 10,000 resamples, seed 20260917
-- Run time: 324 s on CPU
+- Run time: 350 s on CPU
 <!-- /codeatlas:table:metadata -->
 
 ## Changes from the first published version
@@ -372,6 +372,8 @@ working tree. This version changes the measurement, so the numbers moved:
   if it is the wrong function in that file.
 - **Small dev/test halves.** The cap value was chosen on 18 questions.
 - **Retrieval only.** No generation, so no faithfulness measurement.
-- **Same machine, same numbers.** Two runs on one machine reproduce `results/`
-  byte for byte apart from the timestamp; across CPUs, near-tied cosine scores
-  can order differently.
+- **Same machine, same numbers.** Two runs on one machine reproduce every
+  file in `results/` byte for byte; only the timestamp, run time and commit
+  hash recorded in `metadata.json` change (`codeatlas digest` hashes the files
+  without those fields). Across CPUs, near-tied cosine scores can order
+  differently.
