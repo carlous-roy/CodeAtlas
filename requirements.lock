@@ -1,5 +1,6 @@
 # Exact versions that produced results/. Regenerate with scripts/lock.sh.
 # torch comes from the CPU wheel index so that a CPU-only install stays small.
+# The +cpu build exists for Linux and Windows only; macOS gets the same version from PyPI.
 --extra-index-url https://download.pytorch.org/whl/cpu
 annotated-doc==0.0.5
 anyio==4.15.1
@@ -42,7 +43,8 @@ snowballstemmer==3.1.1
 sympy==1.14.0
 threadpoolctl==3.7.0
 tokenizers==0.23.2
-torch==2.14.0+cpu
+torch==2.14.0+cpu; sys_platform != "darwin"
+torch==2.14.0; sys_platform == "darwin"
 tqdm==4.70.1
 transformers==5.17.0
 tree-sitter==0.25.2

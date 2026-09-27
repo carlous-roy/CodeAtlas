@@ -10,8 +10,10 @@ python3 -m venv "$tmp/venv"
 {
   echo "# Exact versions that produced results/. Regenerate with scripts/lock.sh."
   echo "# torch comes from the CPU wheel index so that a CPU-only install stays small."
+  echo "# The +cpu build exists for Linux and Windows only; macOS gets the same version from PyPI."
   echo "--extra-index-url https://download.pytorch.org/whl/cpu"
-  "$tmp/venv/bin/pip" freeze --exclude-editable
+  "$tmp/venv/bin/pip" freeze --exclude-editable \
+    | sed -E 's/^torch==([0-9.]+)\+cpu$/torch==\1+cpu; sys_platform != "darwin"\ntorch==\1; sys_platform == "darwin"/'
 } > requirements.lock
 rm -rf "$tmp"
 echo "wrote requirements.lock"
