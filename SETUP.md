@@ -55,9 +55,9 @@ gitignored.
 Chunk paths are logical: `corpus/<project>/<path inside the project>`,
 regardless of where the directory lives on disk. Tree-sitter parses `.py` and
 `.java`; Markdown splits on headings; every other indexed extension (`.js`,
-`.jsx`, `.ts`, `.tsx`, `.yml`, `.yaml`, `.txt`, `.sql`) is chunked by windows.
-Adding a language means adding its grammar and declaration node types to
-`LANGUAGES` in `codeatlas/chunking.py`.
+`.jsx`, `.ts`, `.tsx`, `.yml`, `.yaml`, `.txt`, `.sql`, `.dax`) is chunked by
+windows. Adding a language means adding its extension to `CODE_EXT` and its
+grammar and declaration node types to `LANGUAGES` in `codeatlas/chunking.py`.
 
 ## Write a golden set
 

@@ -30,9 +30,10 @@ refuses to run on a directory that differs from it.
 | **total** |  |  | **116** | **11,819** |
 <!-- /codeatlas:table:corpus -->
 
-Files are Python, Java, JavaScript, Markdown and YAML. Tree-sitter parses the
-Python and Java files; everything else is chunked by windows in all three
-chunkings.
+Files are Python, Java, JavaScript, Markdown and YAML, plus two
+`requirements.txt` files. Tree-sitter parses the Python and Java files and
+Markdown splits on its headings; everything else is chunked by windows in all
+three chunkings.
 
 ## The questions
 
