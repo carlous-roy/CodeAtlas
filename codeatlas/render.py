@@ -272,9 +272,17 @@ def block_failures(r: Results) -> str:
 def block_corpus(r: Results) -> str:
     rows = []
     for name, info in r.manifest["projects"].items():
-        repo = info.get("repository") or "—"
-        commit = (info.get("commit") or "—")[:12]
-        rows.append([f"`{name}`", repo, f"`{commit}`", str(info["files"]), f"{info['lines']:,}"])
+        repo = info.get("repository") or "none"
+        commit = info.get("commit")
+        rows.append(
+            [
+                f"`{name}`",
+                repo,
+                f"`{commit[:12]}`" if commit else "unpinned",
+                str(info["files"]),
+                f"{info['lines']:,}",
+            ]
+        )
     t = r.manifest["totals"]
     rows.append(["**total**", "", "", f"**{t['files']}**", f"**{t['lines']:,}**"])
     return md_table(["Project", "Repository", "Commit", "Files", "Lines"], rows)

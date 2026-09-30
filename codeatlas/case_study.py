@@ -204,14 +204,15 @@ def _corpus_table(r: Results) -> str:
         link = (
             f'<a href="{esc(repo.removesuffix(".git"))}">{esc(repo.removesuffix(".git").split("/")[-1])}</a>'
             if repo
-            else "—"
+            else "none"
         )
+        commit = info.get("commit")
         rows.append(
             (
                 [
                     f"<code>{esc(name)}</code>",
                     link,
-                    f"<code>{esc((info.get('commit') or '')[:12])}</code>",
+                    f"<code>{esc(commit[:12])}</code>" if commit else "unpinned",
                     str(info["files"]),
                     f"{info['lines']:,}",
                 ],
