@@ -32,6 +32,7 @@ SEED = 20260917
 
 
 def first_hit_rank(paths: Sequence[str], relevant: Iterable[str]) -> int | None:
+    """1-based rank of the first relevant chunk, or None when none is retrieved."""
     rel = set(relevant)
     for i, p in enumerate(paths, start=1):
         if p in rel:
@@ -78,6 +79,7 @@ def ndcg_at_k(paths: Sequence[str], relevant: Iterable[str], k: int) -> float:
 
 
 def score_question(paths: Sequence[str], relevant: Iterable[str]) -> dict[str, float]:
+    """Every metric in ``METRICS`` for one ranked list of chunk paths."""
     rel = set(relevant)
     out: dict[str, float] = {}
     for k in K_LIST:

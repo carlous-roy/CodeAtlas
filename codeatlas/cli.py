@@ -172,6 +172,7 @@ def cmd_render_docs(args: argparse.Namespace) -> int:
 
 # ------------------------------------------------------------------ parser
 def build_parser() -> argparse.ArgumentParser:
+    """The argument parser with every sub-command wired to its handler."""
     parser = argparse.ArgumentParser(prog="codeatlas", description="Semantic code search and its evaluation harness.")
     parser.add_argument("--version", action="version", version=f"codeatlas {__version__}")
     parser.add_argument("-v", "--verbose", action="store_true", help="debug logging")
@@ -257,6 +258,7 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main(argv: list[str] | None = None) -> int:
+    """Run one sub-command and return its exit code."""
     args = build_parser().parse_args(argv)
     _configure_logging(args.verbose)
     return int(args.func(args))

@@ -16,6 +16,8 @@ if TYPE_CHECKING:
 
 @dataclass(frozen=True)
 class ModelPin:
+    """A Hugging Face model name, the revision it is loaded at, and its input window in word pieces."""
+
     name: str
     revision: str
     max_tokens: int
@@ -55,6 +57,7 @@ def _quiet() -> None:
 
 
 def load_embedder() -> SentenceTransformer:
+    """The pinned sentence embedder on CPU; fails if its window is not the one the chunkers assume."""
     _quiet()
     from sentence_transformers import SentenceTransformer
 
@@ -68,6 +71,7 @@ def load_embedder() -> SentenceTransformer:
 
 
 def load_reranker() -> CrossEncoder:
+    """The pinned cross-encoder on CPU, truncating at its window."""
     _quiet()
     from sentence_transformers import CrossEncoder
 

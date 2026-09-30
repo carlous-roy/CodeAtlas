@@ -190,15 +190,18 @@ class Index:
         label: str = "chunks",
         reranker: CrossEncoder | None = None,
     ) -> Index:
+        """Embed the chunks (through the cache under ``cache_dir``) and index them."""
         emb = embed_chunks(chunks, embedder, cache_dir, label)
         return cls(chunks, embedder=embedder, embeddings=emb, reranker=reranker)
 
     # ---------------------------------------------------------- rankings
     def bm25_rank(self, query: str, k: int) -> list[int]:
+        """Top ``k`` chunk indices by BM25 score."""
         scores = np.asarray(self.bm25.get_scores(tokenize(query)), dtype=np.float64)
         return [int(i) for i in _argsort_desc(scores)[:k]]
 
     def dense_rank(self, query: str, k: int) -> list[int]:
+        """Top ``k`` chunk indices by cosine similarity to the query embedding."""
         if self.emb is None or self.embedder is None:
             raise RuntimeError("dense retrieval needs an embedder and embeddings")
         qv = self._query_vectors.get(query)
@@ -209,14 +212,18 @@ class Index:
         return [int(i) for i in _argsort_desc(scores)[:k]]
 
     def hybrid_rank(self, query: str, k: int, depth: int = FUSION_DEPTH, rrf_k: int = RRF_K) -> list[int]:
+        """Top ``k`` after fusing the top ``depth`` of the BM25 and dense rankings."""
         fused = rrf([self.bm25_rank(query, depth), self.dense_rank(query, depth)], k=rrf_k)
         return fused[:k]
 
     def capped_rank(self, query: str, k: int, per_file: int = DEFAULT_PER_FILE, depth: int = CAP_DEPTH) -> list[int]:
+        """Top ``k`` of the hybrid ranking after the per-file cap."""
         ranked = self.hybrid_rank(query, depth)
         return apply_file_cap(ranked, self.paths, per_file)[:k]
 
     def rerank(self, query: str, k: int, prefixed: bool, depth: int = RERANK_DEPTH) -> list[int]:
+        """Top ``k`` after the cross-encoder re-scores the top ``depth`` hybrid
+        candidates, reading the payload when ``prefixed`` else the chunk text."""
         if self.reranker is None:
             raise RuntimeError("reranking needs a cross-encoder")
         candidates = self.hybrid_rank(query, depth)
@@ -225,6 +232,7 @@ class Index:
         return [candidates[int(j)] for j in _argsort_desc(scores)[:k]]
 
     def search(self, query: str, strategy: str, k: int = 10, per_file: int = DEFAULT_PER_FILE) -> list[int]:
+        """Top ``k`` chunk indices for ``query`` under one of ``STRATEGIES``."""
         if strategy == "bm25":
             return self.bm25_rank(query, k)
         if strategy == "dense":

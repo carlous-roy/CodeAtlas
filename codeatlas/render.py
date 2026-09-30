@@ -84,12 +84,11 @@ class Results:
         return {"projects": {}, "totals": {"files": 0, "lines": 0}, "files": []}
 
     def get(self, key: str) -> dict | None:
+        """The metrics entry of a ``chunking/strategy`` key, or None if it was not scored."""
         return self.by_key.get(key)
 
-    def value(self, key: str, metric: str) -> float:
-        return self.by_key[key]["metrics"][metric]["value"]
-
     def comparison(self, a: str, b: str, metric: str) -> dict | None:
+        """The paired comparison of ``a`` against ``b`` on ``metric``, if one was made."""
         for c in self.comparisons:
             if c["a"] == a and c["b"] == b and c["metric"] == metric:
                 return c
@@ -354,6 +353,8 @@ BLOCKS: dict[str, Callable[[Results], str]] = {
 
 
 def render_readme(text: str, r: Results) -> str:
+    """The README text with every marked block replaced by its rendering."""
+
     def replace(m: re.Match[str]) -> str:
         name = m.group(2)
         if name not in BLOCKS:
@@ -368,12 +369,15 @@ def render_readme(text: str, r: Results) -> str:
 
 # ------------------------------------------------------------- case study
 def render_case_study(r: Results) -> str:
+    """The complete case study page."""
     from codeatlas.case_study import render
 
     return render(r)
 
 
 def render_all(results_dir: Path, readme: Path, case_study: Path, check: bool = False) -> int:
+    """Rewrite the README blocks and the case study from ``results_dir``, or
+    with ``check`` only report whether they are current. Returns the exit code."""
     r = Results(results_dir)
     outputs = {readme: render_readme(readme.read_text(encoding="utf-8"), r), case_study: render_case_study(r)}
     stale = [p for p, content in outputs.items() if not p.exists() or p.read_text(encoding="utf-8") != content]
@@ -391,4 +395,5 @@ def render_all(results_dir: Path, readme: Path, case_study: Path, check: bool = 
 
 
 def esc(s: object) -> str:
+    """HTML-escape a value for the case study."""
     return html.escape(str(s), quote=True)

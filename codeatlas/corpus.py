@@ -43,15 +43,12 @@ class ProjectPin:
 
 
 def sha256_of(p: Path) -> str:
+    """Hex sha256 of a file's bytes."""
     h = hashlib.sha256()
     with p.open("rb") as f:
         for block in iter(lambda: f.read(1 << 16), b""):
             h.update(block)
     return h.hexdigest()
-
-
-def sha256_of_bytes(data: bytes) -> str:
-    return hashlib.sha256(data).hexdigest()
 
 
 def _git(args: list[str], cwd: Path | None = None) -> str:
@@ -120,16 +117,19 @@ def build_manifest(corpus_dir: Path, pins: list[ProjectPin] | None = None) -> di
 
 
 def write_manifest(manifest: dict, path: Path) -> None:
+    """Write a manifest as indented JSON, creating the parent directory."""
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
 
 
 def load_manifest(path: Path) -> dict:
+    """Read a manifest written by :func:`write_manifest`."""
     with path.open(encoding="utf-8") as f:
         return json.load(f)
 
 
 def manifest_hash(path: Path) -> str:
+    """sha256 of the manifest file, recorded in metadata.json by the evaluation."""
     return sha256_of(path)
 
 
@@ -158,6 +158,7 @@ def verify_manifest(corpus_dir: Path, manifest: dict) -> list[str]:
 
 
 def pins_from_manifest(manifest: dict) -> list[ProjectPin]:
+    """The repository and commit of every project in the manifest, for :func:`fetch`."""
     pins: list[ProjectPin] = []
     for name, info in manifest["projects"].items():
         if not info.get("repository") or not info.get("commit"):

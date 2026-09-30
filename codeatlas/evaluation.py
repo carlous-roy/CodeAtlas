@@ -80,8 +80,6 @@ log = logging.getLogger("codeatlas")
 
 DEPTH = 10
 DOC_SUFFIXES = (".md", ".txt")
-BASE_STRATEGIES = ("bm25", "dense", "hybrid", "hybrid+cap")
-RERANK_STRATEGIES = ("hybrid+rerank", "hybrid+rerank+prefix")
 CAP_CANDIDATES: tuple[int | None, ...] = (None, 3, 2, 1)
 SHIPPED_CHUNKING = "structural_merged"
 
@@ -140,6 +138,8 @@ COMPARISONS: tuple[tuple[str, str, str, tuple[str, ...]], ...] = (
 
 @dataclass(frozen=True)
 class Question:
+    """One golden question: its id, text, labelled answer files and difficulty label."""
+
     id: str
     q: str
     relevant: tuple[str, ...]
@@ -147,6 +147,7 @@ class Question:
 
 
 def load_golden(path: Path) -> tuple[dict, list[Question]]:
+    """The protocol block and the questions of a golden file; ids must be unique."""
     with path.open(encoding="utf-8") as f:
         data = json.load(f)
     questions = [Question(q["id"], q["q"], tuple(q["relevant"]), q.get("difficulty", "")) for q in data["questions"]]
@@ -180,6 +181,7 @@ def make_split(questions: list[Question], seed: int = SEED) -> dict:
 
 
 def load_split(path: Path, questions: list[Question]) -> dict[str, list[str]]:
+    """The dev and test id lists of a split file, which must partition ``questions``."""
     with path.open(encoding="utf-8") as f:
         data = json.load(f)
     ids = {q.id for q in questions}
@@ -254,6 +256,10 @@ def _group_mean(values: dict[str, float], ids: list[str]) -> float:
 
 @dataclass
 class EvalSettings:
+    """Inputs, outputs and knobs of one evaluation run. ``per_file`` is a cap
+    value or ``"auto"`` to choose one on the dev half; ``manifest_path=None``
+    skips the corpus check and records that in metadata.json."""
+
     corpus_dir: Path
     golden_path: Path
     split_path: Path
@@ -269,6 +275,11 @@ class EvalSettings:
 
 
 class Evaluation:
+    """One run over every chunking and strategy in ``settings``. :meth:`run`
+    checks the corpus, builds each index, chooses the per-file cap on the dev
+    half of the shipped chunking, scores every strategy and writes the results
+    files after each chunking."""
+
     def __init__(self, settings: EvalSettings):
         self.s = settings
         self.protocol, self.questions = load_golden(settings.golden_path)
@@ -435,6 +446,7 @@ class Evaluation:
 
     # ---------------------------------------------------------- main loop
     def run(self) -> None:
+        """Score every configuration and write the results directory."""
         s = self.s
         self.check_corpus()
         s.out_dir.mkdir(parents=True, exist_ok=True)
@@ -487,6 +499,9 @@ class Evaluation:
 
     # ---------------------------------------------------------- outputs
     def comparisons(self) -> list[dict]:
+        """Every paired comparison in ``COMPARISONS`` whose two configurations
+        were scored, plus the shipped configuration against the best other
+        cell by MRR (BM25 alone excluded)."""
         out: list[dict] = []
         have = {r["key"]: r for r in self.results}
         pairs = list(COMPARISONS)
@@ -582,6 +597,7 @@ class Evaluation:
         return out
 
     def metadata(self) -> dict:
+        """Provenance of the run: date, versions, model pins, corpus and settings."""
         s = self.s
         packages = {}
         for name in (
@@ -636,6 +652,7 @@ class Evaluation:
         }
 
     def write(self) -> None:
+        """Write every results file from what has been scored so far."""
         out = self.s.out_dir
         _dump(out / "metrics.json", {"n_questions": len(self.ids), "configurations": self.results})
         _dump(out / "per_question.json", self.per_question)

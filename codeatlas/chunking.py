@@ -135,6 +135,7 @@ def read_source(p: Path) -> str | None:
 
 
 def logical_path(corpus_dir: Path, p: Path) -> str:
+    """``corpus/<project>/<path>`` for a file under the corpus directory."""
     return f"{CORPUS_PREFIX}/{p.relative_to(corpus_dir).as_posix()}"
 
 
@@ -381,6 +382,7 @@ def _fit_unit(unit: Unit, sizer: _Sizer) -> list[Unit]:
 
 
 def fit_units(units: list[Unit], sizer: _Sizer) -> list[Unit]:
+    """Every unit, with those that do not fit the window split into parts."""
     out: list[Unit] = []
     for unit in units:
         out.extend(_fit_unit(unit, sizer))
@@ -529,6 +531,7 @@ def build_chunks(corpus_dir: Path, chunking: str, count_tokens: TokenCounter) ->
 
 
 def write_chunks(chunks: list[Chunk], path: Path) -> None:
+    """Write chunks as JSON lines, one object per chunk."""
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8") as f:
         for c in chunks:
@@ -536,11 +539,13 @@ def write_chunks(chunks: list[Chunk], path: Path) -> None:
 
 
 def read_chunks(path: Path) -> list[Chunk]:
+    """Read a chunk file written by :func:`write_chunks`."""
     with path.open(encoding="utf-8") as f:
         return [Chunk(**json.loads(line)) for line in f if line.strip()]
 
 
 def size_summary(chunks: list[Chunk]) -> dict[str, float | int]:
+    """Chunk count, line-count percentiles and file count of one chunking."""
     sizes = sorted(c.end_line - c.start_line + 1 for c in chunks)
     if not sizes:
         return {"n_chunks": 0}
