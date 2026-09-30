@@ -405,9 +405,13 @@ class Evaluation:
             self.chosen_per_file = self.s.per_file
             self.cap_ablation = {
                 "chunking": chunking,
+                "base_strategy": "hybrid",
                 "rule": "fixed by --per-file",
-                "rows": [],
+                "candidates": [self.s.per_file],
                 "chosen_per_file": self.s.per_file,
+                "dev_n": len(self.split["dev"]),
+                "test_n": len(self.split["test"]),
+                "rows": [],
             }
             return self.s.per_file
         dev_ids = set(self.split["dev"])

@@ -492,6 +492,17 @@ def render(r: Results) -> str:
         else "excludes zero"
     )
     best_other = next((c for c in r.comparisons if c["label"].startswith("shipped configuration")), None)
+    if cap_value:
+        shipped_sentence = f"The shipped configuration is merged structural chunking, hybrid retrieval, and a per-file cap of {cap_value}."
+        cap_sentence = (
+            f"The per-file cap keeps the first {'chunk' if cap_value == 1 else f'{cap_value} chunks'} of every file "
+            "at the head of the list and pushes the rest below every survivor, so nothing is discarded."
+        )
+    else:
+        shipped_sentence = (
+            "The shipped configuration is merged structural chunking and hybrid retrieval, with no per-file cap."
+        )
+        cap_sentence = "No per-file cap was chosen on the dev half, so the shipped ranking is the fused list as it is."
 
     parts: list[str] = []
     parts.append(
@@ -559,7 +570,7 @@ def render(r: Results) -> str:
     parts.append(
         f"""
 <h2 id="results">Results</h2>
-<p>The shipped configuration is merged structural chunking, hybrid retrieval, and a per-file cap of {cap_value}.</p>
+<p>{shipped_sentence}</p>
 {_headline_table(r)}
 <h3>Every configuration</h3>
 {_chart(r)}
@@ -612,7 +623,7 @@ def render(r: Results) -> str:
                                             ┘</pre>
 <p>Tree-sitter parses Python and Java. A class becomes a header chunk (its signature, fields and docstring) plus one chunk per method, so no line is indexed twice; imports and module-level code become their own chunks; Markdown splits on headings and carries the heading path into the text. Files without a grammar (JavaScript, YAML) use windows in every chunking. Every chunk is sized to fit the embedder's window: <code>{esc(embedder["name"])}</code> reads at most {embedder["max_tokens"]} word pieces, so the <code>path :: name</code> prefix plus the text is kept within {budget} tokens, and a declaration longer than that is split into consecutive parts. The window baseline packs lines to the same budget with a quarter of each window repeated in the next.</p>
 {_chunking_table(r)}
-<p>BM25 runs on a tokeniser that splits identifiers (<code>RateLimitFilter</code> is reachable from "rate limit"), drops English stopwords and stems with Snowball. Fusion is Reciprocal Rank Fusion with k = 60 over the top 60 of each list. The per-file cap keeps the first {"chunk" if cap_value == 1 else f"{cap_value} chunks"} of every file at the head of the list and pushes the rest below every survivor, so nothing is discarded. Both models run on CPU at pinned revisions.</p>
+<p>BM25 runs on a tokeniser that splits identifiers (<code>RateLimitFilter</code> is reachable from "rate limit"), drops English stopwords and stems with Snowball. Fusion is Reciprocal Rank Fusion with k = 60 over the top 60 of each list. {cap_sentence} Both models run on CPU at pinned revisions.</p>
 """
     )
 
