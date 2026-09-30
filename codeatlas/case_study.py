@@ -23,7 +23,7 @@ from codeatlas.render import (
 SITE = "https://roycarlous.com"
 PAGE_URL = f"{SITE}/case-studies/codeatlas.html"
 REPO_URL = "https://github.com/carlous-roy/CodeAtlas"
-TITLE = "CodeAtlas: Case Study · Roy Carlous Christudass"
+TITLE = "CodeAtlas: Case study · Roy Carlous Christudass"
 DESCRIPTION = (
     "Semantic code search over four pinned projects, and the evaluation harness "
     "that measures it: 36 labelled questions, three chunkers, six retrieval "
@@ -547,10 +547,10 @@ def render(r: Results) -> str:
 <p>The questions are split 50/50 into a dev half and a test half. The only setting chosen on the data, the per-file cap value, is chosen on the dev half; every table reports all {n} questions with a bootstrap interval, because eighteen questions per half say very little on their own.</p>
 <h3>Metrics</h3>
 <ul>
-  <li><strong>hit rate@k</strong>: 1 when any labelled file appears in the top k chunks. The first version of this project called this recall@k.</li>
-  <li><strong>recall@k</strong>: the share of the labelled files that appear in the top k chunks. For a question with four answer files, one of them in the top 5 is a hit rate of 1 and a recall of 0.25.</li>
-  <li><strong>MRR</strong>: one over the rank of the first relevant chunk, averaged over questions.</li>
-  <li><strong>nDCG@10</strong>: discounted gain with one binary gain per relevant file at its first chunk, normalised by the ideal ordering of the labelled set.</li>
+  <li>hit rate@k: 1 when any labelled file appears in the top k chunks.</li>
+  <li>recall@k: the share of the labelled files that appear in the top k chunks. For a question with four answer files, one of them in the top 5 is a hit rate of 1 and a recall of 0.25.</li>
+  <li>MRR: one over the rank of the first relevant chunk, averaged over questions.</li>
+  <li>nDCG@10: discounted gain with one binary gain per relevant file at its first chunk, normalised by the ideal ordering of the labelled set.</li>
 </ul>
 <p>Every cell carries a 95% percentile bootstrap interval over questions (10,000 resamples). Every claim that one configuration beats another rests on a paired bootstrap of the per-question differences and an exact sign test on the questions where the two differ. When the interval includes zero the page says so.</p>
 """
@@ -570,12 +570,17 @@ def render(r: Results) -> str:
     parts.append(
         f"""
 <h2 id="what-beat-what">What beat what, and what was within noise</h2>
-<p><strong>Structural boundaries against windows.</strong> {_comparison_sentence(r, "structural_merged/hybrid", "window/hybrid", "hit_rate@1", "Merged structural chunking with hybrid retrieval", "windows")} {_comparison_sentence(r, "structural_merged/hybrid", "window/hybrid", "mrr", "The same chunking", "windows")} Both chunkers are packed to the same token budget, so the comparison is about where boundaries fall, not about chunk size.</p>
-<p><strong>Hybrid against dense.</strong> {_comparison_sentence(r, "structural_merged/hybrid", "structural_merged/dense", "mrr", "Hybrid retrieval", "dense retrieval alone")} {_comparison_sentence(r, "structural_merged/hybrid", "structural_merged/dense", "hit_rate@5", "Hybrid retrieval", "dense retrieval")} Fusing in the BM25 ranking pushes some files that dense retrieval had in the top 5 below the cut.</p>
-<p><strong>Hybrid against BM25.</strong> {_comparison_sentence(r, "structural_merged/hybrid", "structural_merged/bm25", "mrr", "Hybrid retrieval", "BM25 alone")}</p>
-<p><strong>The per-file cap.</strong> {_comparison_sentence(r, "structural_merged/hybrid+cap", "structural_merged/hybrid", "recall@5", "With the cap, hybrid retrieval", "the same ranking without it")} {_comparison_sentence(r, "structural_merged/hybrid+cap", "structural_merged/hybrid", "mrr", "The cap", "no cap")} Under file-level relevance the cap cannot lower hit rate or MRR, because the first chunk of every file is always kept and only moves up; the metric it can lower is recall, and it did not.</p>
+<h3>Structural boundaries against windows</h3>
+<p>{_comparison_sentence(r, "structural_merged/hybrid", "window/hybrid", "hit_rate@1", "Merged structural chunking with hybrid retrieval", "windows")} {_comparison_sentence(r, "structural_merged/hybrid", "window/hybrid", "mrr", "The same chunking", "windows")} Both chunkers are packed to the same token budget, so the comparison is about where boundaries fall, not about chunk size.</p>
+<h3>Hybrid against dense</h3>
+<p>{_comparison_sentence(r, "structural_merged/hybrid", "structural_merged/dense", "mrr", "Hybrid retrieval", "dense retrieval alone")} {_comparison_sentence(r, "structural_merged/hybrid", "structural_merged/dense", "hit_rate@5", "Hybrid retrieval", "dense retrieval")} Fusing in the BM25 ranking pushes some files that dense retrieval had in the top 5 below the cut.</p>
+<h3>Hybrid against BM25</h3>
+<p>{_comparison_sentence(r, "structural_merged/hybrid", "structural_merged/bm25", "mrr", "Hybrid retrieval", "BM25 alone")}</p>
+<h3>The per-file cap</h3>
+<p>{_comparison_sentence(r, "structural_merged/hybrid+cap", "structural_merged/hybrid", "recall@5", "With the cap, hybrid retrieval", "the same ranking without it")} {_comparison_sentence(r, "structural_merged/hybrid+cap", "structural_merged/hybrid", "mrr", "The cap", "no cap")} Under file-level relevance the cap cannot lower hit rate or MRR, because the first chunk of every file is always kept and only moves up; the metric it can lower is recall, and it did not.</p>
 {_cap_table(r)}
-<p><strong>The shipped configuration against the next best cell.</strong> {(_comparison_sentence(r, best_other["a"], best_other["b"], "mrr", "The shipped configuration", config_label(best_other["b"])) if best_other else "")}</p>
+<h3>The shipped configuration against the next best cell</h3>
+<p>{(_comparison_sentence(r, best_other["a"], best_other["b"], "mrr", "The shipped configuration", config_label(best_other["b"])) if best_other else "")}</p>
 <h3>All comparisons</h3>
 {_comparisons_table(r)}
 """
@@ -615,11 +620,11 @@ def render(r: Results) -> str:
         f"""
 <h2 id="limitations">Limitations</h2>
 <ul>
-  <li><strong>{n} questions.</strong> The intervals are the honest width: a hit rate of {fmt(s["hit_rate@5"]["value"], "hit_rate@5")} at rank 5 sits in {_ci_text(s["hit_rate@5"], "hit_rate@5")}. Most differences between configurations are inside that width.</li>
-  <li><strong>One labeller, who also wrote the code.</strong> A second round with two independent labellers, an agreement statistic and an adjudication log is specified but not done.</li>
-  <li><strong>File-level relevance is generous.</strong> A chunk from the right file counts even when it is the wrong function in that file.</li>
-  <li><strong>The dev/test halves are small.</strong> The cap value was chosen on eighteen questions; the test half agrees on direction, and that is all it can say.</li>
-  <li><strong>Retrieval only.</strong> No generation, so no measurement of whether an answer follows from the retrieved context.</li>
+  <li>The set is {n} questions. The intervals are the honest width: a hit rate of {fmt(s["hit_rate@5"]["value"], "hit_rate@5")} at rank 5 sits in {_ci_text(s["hit_rate@5"], "hit_rate@5")}. Most differences between configurations are inside that width.</li>
+  <li>One labeller, who also wrote the code. A second round with two independent labellers, an agreement statistic and an adjudication log is specified but not done.</li>
+  <li>File-level relevance is generous: a chunk from the right file counts even when it is the wrong function in that file.</li>
+  <li>The dev/test halves are small. The cap value was chosen on eighteen questions; the test half agrees on direction, and that is all it can say.</li>
+  <li>Retrieval only: no generation, so no measurement of whether an answer follows from the retrieved context.</li>
 </ul>
 </main>
 <footer>

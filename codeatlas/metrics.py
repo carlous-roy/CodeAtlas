@@ -6,8 +6,7 @@ paths, so one file can appear several times; the metrics below count a file
 once, at the rank of its first chunk.
 
 ``hit_rate@k``
-    1 if any relevant file appears in the top ``k`` chunks, else 0. This is
-    what the first version of this project called ``recall@k``.
+    1 if any relevant file appears in the top ``k`` chunks, else 0.
 ``recall@k``
     Share of the labelled files that appear in the top ``k`` chunks.
 ``mrr``

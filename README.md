@@ -60,14 +60,13 @@ adjudication log.
 
 ## Metrics
 
-- **hit rate@k**: 1 when any labelled file appears in the top k chunks, else 0.
-  The first version of this project called this recall@k.
-- **recall@k**: the share of the labelled files that appear in the top k
-  chunks. A question with four answer files and one of them in the top 5 has a
-  hit rate of 1 and a recall of 0.25.
-- **MRR**: one over the rank of the first relevant chunk, averaged.
-- **nDCG@10**: discounted gain with one binary gain per relevant file at the
-  rank of its first chunk, normalised by the ideal ordering of the labelled set.
+- hit rate@k: 1 when any labelled file appears in the top k chunks, else 0.
+- recall@k: the share of the labelled files that appear in the top k chunks. A
+  question with four answer files and one of them in the top 5 has a hit rate
+  of 1 and a recall of 0.25.
+- MRR: one over the rank of the first relevant chunk, averaged.
+- nDCG@10: discounted gain with one binary gain per relevant file at the rank
+  of its first chunk, normalised by the ideal ordering of the labelled set.
 
 Every cell carries a 95% percentile bootstrap interval over questions (10,000
 resamples, fixed seed). Every "A beat B" statement rests on a paired bootstrap
@@ -153,11 +152,7 @@ every metric. Dense retrieval has the higher hit rate@5 (five questions lose a
 top-5 hit when the BM25 ranking is fused in, one gains one), and hybrid has the
 higher hit rate@1 and MRR by amounts the intervals do not separate from zero.
 Hybrid beats BM25 alone on MRR by a margin whose interval excludes zero. BM25 is
-weaker than either, but less weak than in the first version of this project:
-its MRR on the merged chunking is 0.34 against 0.26 before. The tokeniser
-(stopwords dropped, stemming added) is the main change on that path, but the
-corpus and the chunk sizes changed as well, so the two numbers are not a clean
-comparison.
+weaker than either.
 
 ### The per-file cap
 
@@ -267,10 +262,9 @@ Questions missed at rank 5: `tf03`, `tf08`, `tf09`, `tf12`, `dl06`, `dl13`, `gc0
 <!-- /codeatlas:table:failures -->
 
 The share of documentation in the top 5 is about the same on misses and hits;
-its interval includes zero, so "documentation crowds out code", the reading of
-the first version, does not hold after the tokeniser fix. The share of results
-from the wrong project is higher on misses, with an interval that excludes
-zero. The corpus holds four separate projects and nothing in the retriever
+its interval includes zero, so the data does not support the reading that
+documentation crowds out code. The share of results from the wrong project is
+higher on misses, with an interval that excludes zero. The corpus holds four separate projects and nothing in the retriever
 scopes a question to one of them. A project filter is the obvious next fix, and
 it would be measured the same way. The per-question top-10 lists for every
 configuration are in `results/retrievals.json`.
@@ -283,35 +277,34 @@ files ──► chunker ──┬─► BM25 index          ┐
                                             ┘
 ```
 
-**Chunking.** Tree-sitter parses Python and Java. A class becomes a header
-chunk (signature, fields, docstring) plus one chunk per method, so no line is
-indexed twice; imports, module constants and a `__main__` block become
-module-level chunks; comments and decorators directly above a declaration
-belong to it. Markdown splits on headings and carries the heading path into the
-chunk text. Files without a grammar use windows in every chunking.
+Tree-sitter parses Python and Java. A class becomes a header chunk (signature,
+fields, docstring) plus one chunk per method, so no line is indexed twice;
+imports, module constants and a `__main__` block become module-level chunks;
+comments and decorators directly above a declaration belong to it. Markdown
+splits on headings and carries the heading path into the chunk text. Files
+without a grammar use windows in every chunking.
 
-**Chunk size.** `sentence-transformers/all-MiniLM-L6-v2` reads at most 256
-word pieces. Every chunk is sized so that the `path :: name` prefix plus the
-text fits in 254 tokens, measured with the model's own tokenizer, and the
-evaluator checks every payload against the budget before embedding. A
-declaration longer than that is split into consecutive parts named
-`name (2/3)`. The merged chunking packs a file's units greedily to the same
-budget; the window baseline packs lines to it with a quarter of each window
-repeated in the next.
+`sentence-transformers/all-MiniLM-L6-v2` reads at most 256 word pieces. Every
+chunk is sized so that the `path :: name` prefix plus the text fits in 254
+tokens, measured with the model's own tokenizer, and the evaluator checks every
+payload against the budget before embedding. A declaration longer than that is
+split into consecutive parts named `name (2/3)`. The merged chunking packs a
+file's units greedily to the same budget; the window baseline packs lines to it
+with a quarter of each window repeated in the next.
 
-**Tokenisation for BM25** splits identifiers (`RateLimitFilter` is reachable
-from "rate limit"), drops English stopwords and stems with Snowball.
+The BM25 tokeniser splits identifiers (`RateLimitFilter` is reachable from
+"rate limit"), drops English stopwords and stems with Snowball.
 
-**Fusion** is Reciprocal Rank Fusion with k = 60 over the top 60 of each list.
-BM25 scores and cosine similarities are not on one scale, and a weighted blend
-would add a knob that cannot be tuned honestly on 36 questions.
+Fusion is Reciprocal Rank Fusion with k = 60 over the top 60 of each list. BM25
+scores and cosine similarities are not on one scale, and a weighted blend would
+add a knob that cannot be tuned honestly on 36 questions.
 
-**Embeddings** prefix the file path and declaration name onto the chunk text
-before encoding. The embedding cache is keyed on a hash of the payloads and the
-model revision, so a changed corpus never reuses a stale cache.
+Embeddings prefix the file path and declaration name onto the chunk text before
+encoding. The embedding cache is keyed on a hash of the payloads and the model
+revision, so a changed corpus never reuses a stale cache.
 
-**The per-file cap** lives in the retriever (`Index.search(..., "hybrid+cap")`),
-so the configuration that ships is the one that was evaluated.
+The per-file cap lives in the retriever (`Index.search(..., "hybrid+cap")`), so
+the configuration that ships is the one that was evaluated.
 
 ## Running it
 
@@ -361,20 +354,27 @@ working tree. This version changes the measurement, so the numbers moved:
 - The reranker gets the same prefix as the embedder in a second variant.
 - Corpus pinned to public commits; every number carries an interval.
 
+BM25 is less weak than it was: its MRR on the merged chunking is 0.34 against
+0.26 in the first version. The tokeniser (stopwords dropped, stemming added) is
+the main change on that path, but the corpus and the chunk sizes changed as
+well, so the two numbers are not a clean comparison. The first version also
+read the misses as documentation crowding out code; with the new tokeniser the
+share of documentation in the top 5 is about the same on misses and hits.
+
 ## Limitations
 
-- **36 questions.** The intervals are the honest width: the headline hit
+- The set is 36 questions. The intervals are the honest width: the headline hit
   rate@5 sits in roughly 0.67 to 0.92. Most differences between configurations
   are inside that width, and the text above says so where it applies.
-- **One labeller, who also wrote the code.** The second round in
+- One labeller, who also wrote the code. The second round in
   `eval/LABELLING.md` (two labellers, Cohen's kappa, adjudication log) is not
   done.
-- **File-level relevance is generous.** A chunk from the right file counts even
-  if it is the wrong function in that file.
-- **Small dev/test halves.** The cap value was chosen on 18 questions.
-- **Retrieval only.** No generation, so no faithfulness measurement.
-- **Same machine, same numbers.** Two runs on one machine reproduce every
-  file in `results/` byte for byte; only the timestamp, run time and commit
-  hash recorded in `metadata.json` change (`codeatlas digest` hashes the files
+- File-level relevance is generous: a chunk from the right file counts even if
+  it is the wrong function in that file.
+- The dev/test halves are small: the cap value was chosen on 18 questions.
+- Retrieval only: no generation, so no faithfulness measurement.
+- Reproducibility is per machine. Two runs on one machine reproduce every file
+  in `results/` byte for byte; only the timestamp, run time and commit hash
+  recorded in `metadata.json` change (`codeatlas digest` hashes the files
   without those fields). Across CPUs, near-tied cosine scores can order
   differently.
